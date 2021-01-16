@@ -1,0 +1,1 @@
+Rails app generated with rails-templates, created by the Le Wagon coding bootcamp team.
