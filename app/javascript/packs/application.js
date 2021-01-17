@@ -9,7 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import Hello from './hello_react'
-
+import "src"
 
 Rails.start()
 Turbolinks.start()
