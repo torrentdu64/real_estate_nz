@@ -1,7 +1,12 @@
-@import "cards";
+
 
 body {
   background-color: white;
+}
+
+.map-frame-list{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .container {
@@ -17,7 +22,7 @@ body {
 
 .map-container {
   height: 100vh;
-  width: 40%;
+  width: 100%;
   height: 100vh;
   position: sticky !important; /* !important to override Gmaps inline CSS */
   top: 0 !important;
@@ -25,7 +30,7 @@ body {
 
 .flat-list {
   padding-left: 10px;
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;

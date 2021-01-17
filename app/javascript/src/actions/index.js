@@ -37,3 +37,12 @@ export function fetchPosts() {
   }
 }
 
+export function fetchHouses(){
+  // give all flats to the payload
+  return {
+    type: FETCH_HOUSE,
+    payload: promise
+  }
+
+}
+

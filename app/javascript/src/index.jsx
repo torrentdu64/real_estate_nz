@@ -13,8 +13,10 @@ import PostsShow from './containers/posts_show';
 import PostsNew from './containers/posts_new';
 
 import '../../assets/stylesheets/application.scss';
+
 import postsReducer from './reducers/posts_reducer';
 
+import MapWithList from './containers/map_with_list';
 
 const reducers = combineReducers({
   posts: postsReducer,
@@ -27,14 +29,22 @@ const middlewares = applyMiddleware(reduxPromise, logger);
 ReactDOM.render(
   <Provider store={createStore(reducers, {}, middlewares)}>
     <Router history={history}>
-      <div className="thin-container">
+      <div className="map-frame-list">
         <Switch>
-          <Route path="/" exact component={PostsIndex} />
+
+          {/*<Route path="/" exact component={PostsIndex} />
           <Route path="/posts/new" exact component={PostsNew} />
-          <Route path="/posts/:id" component={PostsShow} />
+          <Route path="/posts/:id" component={PostsShow} />*/}
+          {/*<Route path="/" exact component={MapWithList} />*/}
+
         </Switch>
       </div>
     </Router>
+
+    <div className="map-frame-list">
+      <MapWithList />
+    </div>
+
   </Provider>,
   document.getElementById('root')
 );
