@@ -16,11 +16,14 @@ import '../../assets/stylesheets/application.scss';
 
 import postsReducer from './reducers/posts_reducer';
 
+import housesReducer from './reducers/houses_reducer';
+
 import MapWithList from './containers/map_with_list';
 
 const reducers = combineReducers({
-  posts: postsReducer,
-  form: formReducer
+  // posts: postsReducer,
+  // form: formReducer,
+  houses: housesReducer
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);
@@ -35,15 +38,13 @@ ReactDOM.render(
           {/*<Route path="/" exact component={PostsIndex} />
           <Route path="/posts/new" exact component={PostsNew} />
           <Route path="/posts/:id" component={PostsShow} />*/}
-          {/*<Route path="/" exact component={MapWithList} />*/}
+          <Route path="/" exact component={MapWithList} />
 
         </Switch>
       </div>
     </Router>
 
-    <div className="map-frame-list">
-      <MapWithList />
-    </div>
+
 
   </Provider>,
   document.getElementById('root')

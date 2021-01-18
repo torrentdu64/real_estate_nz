@@ -1,38 +1,61 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
+
+
 import flats from '../data/flats';
 import FlatList from './flat_list';
 import Marker from './marker';
 
+
+
 class MapWithList extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       selectedFlat: flats[0],
       flats
+
+    };
+
+  }
+
+
+
+
+
+  defaultCenter() {
+
+    return {
+      lat: 48.885707,
+      lng: 2.343543
     };
   }
 
-  defaultCenter() {
-    return {
-      lat: this.state.selectedFlat.lat,
-      lng: this.state.selectedFlat.lng
-    };
+  renderMap(){
+    return (
+       <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >
+
+        </GoogleMapReact>
+      )
   }
 
   render() {
+
+
     return (
       <>
-        <FlatList flats={this.state.flats} selectedFlat={this.state.selectedFlat}  />
+        <FlatList   />
+
         <div className="map-container">
-          <GoogleMapReact defaultCenter={this.defaultCenter()} defaultZoom={12}>
-            <Marker lat={this.state.selectedFlat.lat} lng={this.state.selectedFlat.lng} />
-          </GoogleMapReact>
+         {this.renderMap()}
         </div>
       </>
      );
   }
 }
+
+
 
 export default MapWithList;

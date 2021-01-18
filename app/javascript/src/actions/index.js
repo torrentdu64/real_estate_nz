@@ -1,6 +1,10 @@
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POST = 'FETCH_POST';
 export const POST_CREATED = 'POST_CREATED';
+export const FETCH_HOUSE = 'FETCH_HOUSE';
+
+import flats from '../data/flats';
+
 
 export function createPost(body, callback) {
   const request = fetch("http://reduxblog.herokuapp.com/api/posts?key=WAGON-BLOG", {
@@ -39,6 +43,9 @@ export function fetchPosts() {
 
 export function fetchHouses(){
   // give all flats to the payload
+  const promise = flats;
+
+
   return {
     type: FETCH_HOUSE,
     payload: promise
