@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
-
+import { connect } from 'react-redux';
 
 import flats from '../data/flats';
 import FlatList from './flat_list';
 import Marker from './marker';
-
-
 
 class MapWithList extends Component {
 
@@ -16,17 +14,10 @@ class MapWithList extends Component {
     this.state = {
       selectedFlat: flats[0],
       flats
-
     };
-
   }
 
-
-
-
-
   defaultCenter() {
-
     return {
       lat: 48.885707,
       lng: 2.343543
@@ -34,20 +25,22 @@ class MapWithList extends Component {
   }
 
   renderMap(){
+    let  { ...selectedHouseCoordonate }  = {...this.props.selectedHouse[0]}
+
+
+
     return (
        <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >
-         <Marker lat={this.state.selectedFlat.lat} lng={this.state.selectedFlat.lng} />
+         <Marker lat={selectedHouseCoordonate.lat} lng={selectedHouseCoordonate.lng} />
         </GoogleMapReact>
       )
   }
 
   render() {
 
-
     return (
       <>
         <FlatList   />
-
         <div className="map-container">
          {this.renderMap()}
         </div>
@@ -56,6 +49,11 @@ class MapWithList extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    selectedHouse: state.selectedHouse
+  }
+}
 
 
-export default MapWithList;
+export default connect(mapStateToProps, null)(MapWithList);
