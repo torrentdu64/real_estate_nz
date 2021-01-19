@@ -17,28 +17,29 @@ class FlatList extends Component {
     if (this.props.houses.length === 0) {
       this.props.fetchHouses();
     }
-
   }
 
   renderList() {
-
-     return this.props.houses.map((flat) => {
-
+     return this.props.houses.map((flat, index) => {
+      // undo the previeus click with .isActive.status
+      // from <Flat /> component
+      if (flat.isActive){
+        flat.isActive.status = false
+      }
       return (
-
         <Flat
           flat={flat}
           key={flat.lat}
-          //selected={flat.name === props.selectedFlat.name}
+          index={index}
         />
       );
     });
   };
 
+
   render(){
     return (
       <div className="flat-list">
-
         { this.renderList() }
       </div>
     );

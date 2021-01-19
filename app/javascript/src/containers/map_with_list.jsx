@@ -36,7 +36,7 @@ class MapWithList extends Component {
   renderMap(){
     return (
        <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >
-
+         <Marker lat={this.state.selectedFlat.lat} lng={this.state.selectedFlat.lng} />
         </GoogleMapReact>
       )
   }

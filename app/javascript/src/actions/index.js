@@ -2,6 +2,7 @@ export const FETCH_POSTS = 'FETCH_POSTS';
 export const FETCH_POST = 'FETCH_POST';
 export const POST_CREATED = 'POST_CREATED';
 export const FETCH_HOUSE = 'FETCH_HOUSE';
+export const SELECTED_HOUSE = 'SELECTED_HOUSE';
 
 import flats from '../data/flats';
 
@@ -45,11 +46,17 @@ export function fetchHouses(){
   // give all flats to the payload
   const promise = flats;
 
-
   return {
     type: FETCH_HOUSE,
     payload: promise
   }
+}
 
+export function selectHouse(house){
+  const promise = house
+  return {
+    type: SELECTED_HOUSE,
+    payload: promise
+  }
 }
 

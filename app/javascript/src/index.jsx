@@ -17,13 +17,15 @@ import '../../assets/stylesheets/application.scss';
 import postsReducer from './reducers/posts_reducer';
 
 import housesReducer from './reducers/houses_reducer';
+import selectedHouseReducer from './reducers/selected_house_reducer';
 
 import MapWithList from './containers/map_with_list';
 
 const reducers = combineReducers({
   // posts: postsReducer,
   // form: formReducer,
-  houses: housesReducer
+  houses: housesReducer,
+  selectedHouse: selectedHouseReducer
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);
