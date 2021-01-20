@@ -1,0 +1,36 @@
+
+
+.card-wrap{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+
+}
+.card-frame {
+    width: 50%;
+  }
+.hidden-description{
+    display: none;
+}
+// .bottom-card {
+//   background: red;
+//   padding: 19px;
+//   margin-right: 10px;
+//   margin-right: 10px;
+//   margin-bottom: 10px;
+// }
+
+// .flat-list {
+//     padding-left: 10px;
+//     width: 100%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: flex-start;
+// }
+
+// .flat-list .card {
+//     width: calc(100% - 10px) !important;
+//     margin-right: 10px;
+//     margin-bottom: 10px;
+// }

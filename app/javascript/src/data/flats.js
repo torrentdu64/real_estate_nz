@@ -47,6 +47,42 @@ const flats = [
     lat: 48.827855,
     lng: 2.350774
   }
+  ,
+  {
+    name: "Castel",
+    imageUrl: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat6.jpg",
+    price: 90,
+    priceCurrency: "EUR",
+    lat: 48.327855,
+    lng: 2.450774
+  }
+  ,
+  {
+    name: "cabane",
+    imageUrl: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat5.jpg",
+    price: 90,
+    priceCurrency: "EUR",
+    lat: 48.727855,
+    lng: 2.250774
+  }
+  ,
+  {
+    name: "Flat Flat",
+    imageUrl: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat6.jpg",
+    price: 90,
+    priceCurrency: "EUR",
+    lat: 48.847855,
+    lng: 2.380774
+  }
+  ,
+  {
+    name: "Bohemian and Chic in Paris",
+    imageUrl: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat6.jpg",
+    price: 90,
+    priceCurrency: "EUR",
+    lat: 48.927855,
+    lng: 2.350774
+  }
 ];
 
 export default flats;

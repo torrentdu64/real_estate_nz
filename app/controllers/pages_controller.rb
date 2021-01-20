@@ -4,4 +4,7 @@ class PagesController < ApplicationController
   def home
     @houses = House.all
   end
+
+  def test
+  end
 end
