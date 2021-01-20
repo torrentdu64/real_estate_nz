@@ -1,6 +1,6 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-
+<%= link_to "go to test", test_path, class: 'btn btn-success' %>
 <% @houses.each do |house| %>
 
   <h1><%= house.name %> - <%= house.rating %></h1>

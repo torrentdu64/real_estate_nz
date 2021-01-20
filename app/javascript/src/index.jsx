@@ -42,6 +42,7 @@ ReactDOM.render(
           <Route path="/posts/new" exact component={PostsNew} />
           <Route path="/posts/:id" component={PostsShow} />*/}
           <Route path="/" exact component={MapWithList} />
+          <Route path="/test" exact component={MapWithList} />
 
         </Switch>
       </div>
