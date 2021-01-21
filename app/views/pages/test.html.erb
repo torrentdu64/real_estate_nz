@@ -1,1 +1,37 @@
-<div id=root></div>
+
+<div class="main-container">
+  <div class="cards">
+    <% @data.each do |d| %>
+      <div class="parent-card">
+        <p class="card"><%= d %></p>
+      </div>
+<!-- <p class=" hidden ">content <%= d %></p> -->
+    <% end %>
+  </div>
+  <div id="map">
+    <h2>map</h2>
+  </div>
+
+</div>
+
+<script>
+  let currentCard = document.querySelectorAll('.card');
+
+ currentCard.forEach( (card) => {
+    card.addEventListener('click', function(e){
+
+    const content = e.target.closest('.parent-card')
+     card.style = 'background: red'
+     content.insertAdjacentHTML("afterend", "<div class='card content'>my block</div>")
+
+
+    })
+ })
+  // currentCard.addEventListener('click', function(){
+  //   console.log(currentCard)
+  //   currentCard.style = 'background: red'
+  // })
+</script>
+
+
+<!-- <div id=root></div> -->

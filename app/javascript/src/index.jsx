@@ -35,7 +35,7 @@ const middlewares = applyMiddleware(reduxPromise, logger);
 ReactDOM.render(
   <Provider store={createStore(reducers, {}, middlewares)}>
     <Router history={history}>
-      <div className="map-frame-list">
+      <div className="main-container ">
         <Switch>
 
           {/*<Route path="/" exact component={PostsIndex} />

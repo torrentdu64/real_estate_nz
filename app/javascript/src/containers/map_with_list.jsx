@@ -41,7 +41,7 @@ class MapWithList extends Component {
     return (
       <>
         <FlatList   />
-        <div className="map-container">
+        <div className="" id="map">
          {this.renderMap()}
         </div>
       </>

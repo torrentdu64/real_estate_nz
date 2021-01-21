@@ -37,7 +37,7 @@ class Flat extends Component {
 
   render(){
     return (
-      <div className="card-wrap card-frame">
+     <>
         <div className={`card ${this.state.cardClicked ? 'active' : ''}`}
              style={{  width: '95%' , backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${this.props.flat.imageUrl}')` }}
              >
@@ -55,7 +55,7 @@ class Flat extends Component {
           </div>
           <a className="card-link"></a>
         </div>
-      </div>
+      </>
     );
   }
 };
