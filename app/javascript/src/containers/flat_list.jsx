@@ -10,6 +10,9 @@ class FlatList extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      infoCardClicked: false
+    }
   }
 
   componentWillMount() {
@@ -17,6 +20,28 @@ class FlatList extends Component {
     if (this.props.houses.length === 0) {
       this.props.fetchHouses();
     }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+
+    if (prevState.cardClicked !== this.state.cardClicked) {
+      console.log('========================================================================')
+       console.log('========================================================================')
+      console.log('prevState', prevState.infoCardClicked)
+       console.log('========================================================================')
+      console.log('state', this.state.infoCardClicked)
+    }
+  }
+
+
+  handleInfoCardClicked = async (status) => {
+
+    await this.setState({
+      infoCardClicked: status
+    })
+
+    console.log('handleInfoCardClickedthis',this.state.infoCardClicked)
+
   }
 
   renderList() {
@@ -31,6 +56,8 @@ class FlatList extends Component {
           flat={flat}
           key={flat.lat}
           index={index}
+          infoCardClicked={this.state.infoCardClicked}
+          handleInfoCardClicked={this.handleInfoCardClicked}
         />
       );
     });

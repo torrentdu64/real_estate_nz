@@ -13,20 +13,34 @@ class Flat extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+
+    if (prevState.cardClicked !== this.state.cardClicked) {
+      // console.log('========================================================================')
+      //  console.log('========================================================================')
+      // console.log('this.props', this.props.infoCardClicked)
+      //  console.log('========================================================================')
+      // console.log('prevProps', prevProps.infoCardClicked)
+    }
+  }
 
 
 
   handleClickEvent = async (e) => {
+    await this.props.handleInfoCardClicked(!this.state.cardClicked)
     this.props.selectHouse(this.props.flat);
+    const  activated = await this.props.flat.name === this.props.selectedHouse[0]?.name ? true : false
     await this.setState({
-      cardClicked: !this.state.cardClicked
+      cardClicked: this.props.infoCardClicked
     })
-    this.toggleDescriptionInfo(e);
+    // flasy the infocard ??
+    //this.toggleDescriptionInfo(e);
   }
 
 
 
   toggleDescriptionInfo(e){
+
     const hidden_description = e.target.parentNode.parentNode.querySelector('.hidden-description');
    if (this.state.cardClicked){
        hidden_description.style =  "display: block";
@@ -36,9 +50,10 @@ class Flat extends Component {
   }
 
   render(){
+    const  activated = this.props.flat.name === this.props.selectedHouse[0]?.name ? true : false;
     return (
       <div className="card-wrap card-frame">
-        <div className={`card ${this.state.cardClicked ? 'active' : ''}`}
+        <div className={`card ${activated ? 'active' : ''}`}
              style={{  width: '95%' , backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${this.props.flat.imageUrl}')` }}
              >
           <div className="card-category">{this.props.flat.price} {this.props.flat.priceCurrency}</div>
@@ -48,7 +63,7 @@ class Flat extends Component {
           <a className="card-link" onClick={ this.handleClickEvent }></a>
         </div>
 
-        <div className="card hidden-description" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))')` }}>
+        <div className={`card ${activated ? '' : 'hidden-description'}` } style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))')` }}>
           <div className="card-category">{this.props.flat.price} {this.props.flat.priceCurrency}</div>
           <div className="card-description">
             <h2>{this.props.flat.name}</h2>
@@ -61,6 +76,7 @@ class Flat extends Component {
 };
 
 function mapStateToProps(state) {
+  console.log('mapStateToProps', state.selectedHouse);
   return {
     selectedHouse: state.selectedHouse
   }
