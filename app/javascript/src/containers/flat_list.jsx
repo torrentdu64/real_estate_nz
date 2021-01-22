@@ -25,22 +25,22 @@ class FlatList extends Component {
   componentDidUpdate(prevProps, prevState) {
 
     if (prevState.cardClicked !== this.state.cardClicked) {
-      console.log('========================================================================')
-       console.log('========================================================================')
-      console.log('prevState', prevState.infoCardClicked)
-       console.log('========================================================================')
-      console.log('state', this.state.infoCardClicked)
+      //console.log('========================================================================')
+      // console.log('========================================================================')
+     // console.log('prevState', prevState.infoCardClicked)
+      // console.log('========================================================================')
+     // console.log('state', this.state.infoCardClicked)
     }
   }
 
 
-  handleInfoCardClicked = async (status) => {
+  handleInfoCardClicked = async () => {
 
     await this.setState({
-      infoCardClicked: status
+      infoCardClicked: !this.state.infoCardClicked
     })
 
-    console.log('handleInfoCardClickedthis',this.state.infoCardClicked)
+
 
   }
 
@@ -48,9 +48,9 @@ class FlatList extends Component {
      return this.props.houses.map((flat, index) => {
       // undo the previeus click with .isActive.status
       // from <Flat /> component
-      if (flat.isActive){
-        flat.isActive.status = false
-      }
+      // if (flat.isActive){
+      //   flat.isActive.status = false
+      // }
       return (
         <Flat
           flat={flat}

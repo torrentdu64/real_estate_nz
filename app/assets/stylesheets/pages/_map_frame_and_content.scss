@@ -5,8 +5,14 @@ body {
 }
 
 .map-frame-list{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  // grid-auto-flow: row;
+}
+
+.grow{
+  grid-row: span 2;
 }
 
 .container {
@@ -31,9 +37,12 @@ body {
 .flat-list {
   padding-left: 10px;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-flow: row;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: flex-start;
   .card {
     width: calc(50% - 10px);
     margin-right: 10px;
