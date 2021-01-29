@@ -4,6 +4,11 @@ export const POST_CREATED = 'POST_CREATED';
 export const FETCH_HOUSE = 'FETCH_HOUSE';
 export const SELECTED_HOUSE = 'SELECTED_HOUSE';
 
+export const ODD_INDEX = 'ODD_INDEX';
+export const EVEN_INDEX = 'EVEN_INDEX';
+
+export const STORE_INDEX = 'STORE_INDEX';
+
 
 import flats from '../data/flats';
 //import House from '../model/house';
@@ -63,5 +68,27 @@ export function selectHouse(house){
   }
 }
 
+export function pushOddIndex(oddIndex){
+  const promise = oddIndex
+  return {
+    type: ODD_INDEX,
+    payload: promise
+  }
+}
 
+export function pushEvenIndex(evenIndex){
+  const promise = evenIndex
+  return {
+    type: EVEN_INDEX,
+    payload: promise
+  }
+}
+
+export function pushIndex(index) {
+  const promise = index
+  return {
+    type: STORE_INDEX,
+    payload: promise
+  }
+}
 

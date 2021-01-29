@@ -13,6 +13,7 @@ class FlatList extends Component {
     this.state = {
       infoCardClicked: false
     }
+    this.listRef = React.createRef();
   }
 
   componentWillMount() {
@@ -23,7 +24,6 @@ class FlatList extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-
     if (prevState.cardClicked !== this.state.cardClicked) {
       //console.log('========================================================================')
       // console.log('========================================================================')
@@ -33,51 +33,44 @@ class FlatList extends Component {
     }
   }
 
-
-  handleInfoCardClicked = async () => {
-
-    await this.setState({
-      infoCardClicked: !this.state.infoCardClicked
-    })
-
-
-
+  handleRefCard = (cardRef) => {
+    // console.log('parent cardRef', cardRef)
+    // console.log('listRef', this.listRef)
   }
+
+
 
   renderList() {
      return this.props.houses.map((flat, index) => {
-      // undo the previeus click with .isActive.status
-      // from <Flat /> component
-      // if (flat.isActive){
-      //   flat.isActive.status = false
-      // }
+
       return (
-        <Flat
-          flat={flat}
-          key={flat.lat}
-          index={index}
-          infoCardClicked={this.state.infoCardClicked}
-          handleInfoCardClicked={this.handleInfoCardClicked}
-        />
+          <Flat
+            flat={flat}
+            key={flat.lat}
+            index={index + 1}
+            handleRefCard={this.handleRefCard.bind(this)}
+            refs={this.listRef}
+          />
       );
+
     });
   };
 
 
   render(){
+
     return (
       <div className="flat-list">
         { this.renderList() }
       </div>
     );
   }
-
-
 };
 
 function mapStateToProps(state) {
   return {
-    houses: state.houses
+    houses: state.houses,
+    oddIndex: state.oddIndex
   }
 }
 

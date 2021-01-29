@@ -19,6 +19,11 @@ import postsReducer from './reducers/posts_reducer';
 import housesReducer from './reducers/houses_reducer';
 import selectedHouseReducer from './reducers/selected_house_reducer';
 
+import oddIndexReducer from './reducers/odd_index_reducer';
+import eventIndexReducer from './reducers/event_index_reducer';
+
+import indexReducer from './reducers/index_reducer';
+
 
 import MapWithList from './containers/map_with_list';
 
@@ -26,7 +31,10 @@ const reducers = combineReducers({
   // posts: postsReducer,
   // form: formReducer,
   houses: housesReducer,
-  selectedHouse: selectedHouseReducer
+  selectedHouse: selectedHouseReducer,
+  oddIndex: oddIndexReducer,
+  eventIndex: eventIndexReducer,
+  storeIndex: indexReducer
 });
 
 const middlewares = applyMiddleware(reduxPromise, logger);

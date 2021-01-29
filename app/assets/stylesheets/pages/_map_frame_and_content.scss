@@ -34,12 +34,17 @@ body {
   top: 0 !important;
 }
 
+
+
+
+
 .flat-list {
   padding-left: 10px;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-flow: row;
+
   // display: flex;
   // flex-wrap: wrap;
   // justify-content: flex-start;
@@ -47,6 +52,7 @@ body {
     width: calc(50% - 10px);
     margin-right: 10px;
     margin-bottom: 10px;
+    transition: all 0.5s ease; // transition red frame
   }
 }
 
