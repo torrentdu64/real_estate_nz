@@ -36,13 +36,22 @@ class MapWithList extends Component {
       )
   }
 
+  //  renderObj() {
+  // let res = []
+  //  for( let [key, value] of Object.entries(this.props.storeIndex.patternOrderObj)) {
+  //      res.push(<div key={key}>`${key} - ${value} `</div>)
+  //   }
+  // return res
+  // }
+  // { }
   render() {
 
     return (
       <>
         <FlatList   />
         <div className="map-container">
-         {this.renderMap()}
+
+         { this.renderMap() }
         </div>
       </>
      );
@@ -51,7 +60,8 @@ class MapWithList extends Component {
 
 function mapStateToProps(state) {
   return {
-    selectedHouse: state.selectedHouse
+    selectedHouse: state.selectedHouse,
+    storeIndex: state.storeIndex
   }
 }
 

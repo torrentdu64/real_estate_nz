@@ -44,6 +44,7 @@ class FlatList extends Component {
      return this.props.houses.map((flat, index) => {
 
       return (
+
           <Flat
             flat={flat}
             key={flat.lat}
@@ -57,11 +58,15 @@ class FlatList extends Component {
   };
 
 
+
   render(){
 
     return (
+
       <div className="flat-list">
+
         { this.renderList() }
+
       </div>
     );
   }
@@ -70,7 +75,8 @@ class FlatList extends Component {
 function mapStateToProps(state) {
   return {
     houses: state.houses,
-    oddIndex: state.oddIndex
+    oddIndex: state.oddIndex,
+    storeIndex: state.storeIndex
   }
 }
 

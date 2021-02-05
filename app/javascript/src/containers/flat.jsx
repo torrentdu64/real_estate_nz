@@ -75,6 +75,8 @@ class Flat extends Component {
 
 
 
+
+
       // if (this.props.index % 2 !== 0 ){
       //   await this.props.pushOddIndex(this.props.index)
       // }else if (this.props.oddIndex[0] % 2 !== 0 && this.props.index % 2 === 0 ){
@@ -280,7 +282,7 @@ class Flat extends Component {
   }
 
   render(){
-
+    //${this.displayOrderClass()}
     this.activated = (this.props.flat.name === this.props.selectedHouse[0]?.name && this.state.cardClicked ) ? true : false;
     return ( //${this.displayOrderClass()}
       <div className={`card-wrap card-frame ${this.activated ? 'grow' : ''} ${this.displayOrderClass()} ` } data-idx={this.props.index } ref={this.cardRef}>
