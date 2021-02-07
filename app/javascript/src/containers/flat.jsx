@@ -13,18 +13,13 @@ class Flat extends Component {
     }
   }
 
-
-
-
   handleClickEvent = async (e) => {
     this.props.selectHouse(this.props.flat);
     await this.setState({
       cardClicked: !this.state.cardClicked
     })
-    this.toggleDescriptionInfo(e);
+    //this.toggleDescriptionInfo(e);
   }
-
-
 
   toggleDescriptionInfo(e){
     const hidden_description = e.target.parentNode.parentNode.querySelector('.hidden-description');
@@ -37,9 +32,9 @@ class Flat extends Component {
 
   render(){
     return (
-      <div className="card-wrap card-frame">
+
         <div className={`card ${this.state.cardClicked ? 'active' : ''}`}
-             style={{  width: '95%' , backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${this.props.flat.imageUrl}')` }}
+             style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${this.props.flat.imageUrl}')` }}
              >
           <div className="card-category">{this.props.flat.price} {this.props.flat.priceCurrency}</div>
           <div className="card-description">
@@ -48,14 +43,6 @@ class Flat extends Component {
           <a className="card-link" onClick={ this.handleClickEvent }></a>
         </div>
 
-        <div className="card hidden-description" style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))')` }}>
-          <div className="card-category">{this.props.flat.price} {this.props.flat.priceCurrency}</div>
-          <div className="card-description">
-            <h2>{this.props.flat.name}</h2>
-          </div>
-          <a className="card-link"></a>
-        </div>
-      </div>
     );
   }
 };

@@ -22,6 +22,11 @@ import selectedHouseReducer from './reducers/selected_house_reducer';
 
 import MapWithList from './containers/map_with_list';
 
+import FlatBanner from './containers/flat_banner';
+
+import App from './containers/app';
+
+
 const reducers = combineReducers({
   // posts: postsReducer,
   // form: formReducer,
@@ -35,23 +40,20 @@ const middlewares = applyMiddleware(reduxPromise, logger);
 ReactDOM.render(
   <Provider store={createStore(reducers, {}, middlewares)}>
     <Router history={history}>
-      <div className="map-frame-list">
         <Switch>
 
-          {/*<Route path="/" exact component={PostsIndex} />
-          <Route path="/posts/new" exact component={PostsNew} />
-          <Route path="/posts/:id" component={PostsShow} />*/}
-          <Route path="/" exact component={MapWithList} />
-          <Route path="/test" exact component={MapWithList} />
+          <Route path="/" exact component={App} />
+
+
 
         </Switch>
-      </div>
     </Router>
-
-
 
   </Provider>,
   document.getElementById('root')
 );
 
 
+{/*<Route path="/" exact component={PostsIndex} />
+          <Route path="/posts/new" exact component={PostsNew} />
+          <Route path="/posts/:id" component={PostsShow} />*/}

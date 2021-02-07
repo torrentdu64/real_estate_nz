@@ -39,13 +39,11 @@ class FlatList extends Component {
 
   render(){
     return (
-      <div className="flat-list">
+      <div className="cards">
         { this.renderList() }
       </div>
     );
   }
-
-
 };
 
 function mapStateToProps(state) {

@@ -5,6 +5,5 @@ class PagesController < ApplicationController
     @houses = House.all
   end
 
-  def test
-  end
+
 end

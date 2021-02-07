@@ -7,6 +7,7 @@ import flats from '../data/flats';
 import FlatList from './flat_list';
 import Marker from './marker';
 
+
 class MapWithList extends Component {
 
   constructor(props) {
@@ -39,12 +40,12 @@ class MapWithList extends Component {
   render() {
 
     return (
-      <>
+      <div className="main-container">
         <FlatList   />
-        <div className="map-container">
+        <div id="map">
          {this.renderMap()}
         </div>
-      </>
+      </div>
      );
   }
 }
