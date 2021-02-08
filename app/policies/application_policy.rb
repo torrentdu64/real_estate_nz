@@ -1,4 +1,4 @@
-class ApplicationPolicy
+class ApplicationPolicy < ActionController::Base
   attr_reader :user, :record
 
   def initialize(user, record)

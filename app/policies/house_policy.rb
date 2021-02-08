@@ -1,4 +1,4 @@
-class HousesPolicy < ApplicationPolicy
+class HousePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
