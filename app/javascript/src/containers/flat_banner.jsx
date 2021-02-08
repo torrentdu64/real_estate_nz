@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import FlatDetail from './flat_banner'
+
 
 
 class FlatBanner extends Component {
@@ -9,7 +11,9 @@ class FlatBanner extends Component {
     super(props);
 
     this.state = {
-      activatedBanner: ['']
+      activatedBanner: [''],
+      overlay: '15',
+      show: false
     }
   }
 
@@ -52,14 +56,35 @@ class FlatBanner extends Component {
     })
   }
 
+  showDetail = () => {
+    // this.setState({
+    //   overlay: '100'
+    // })
+    this.setState({
+      show: !this.state.show
+    })
+  }
+
   render(){
     return (
-      <div className={`banner ${this.state.activatedBanner}`} id="myHeader">
+      <div
+            className={`banner ${this.state.activatedBanner}`}
+            id="myHeader"
+            style={{ height: `${this.state.overlay}vh`}}
+      >
         <div>
            <h3 > { this.props.selectedHouse[0]?.name }</h3>
            <h3 > { this.props.selectedHouse[0]?.price } { this.props.selectedHouse[0]?.priceCurrency } </h3>
         </div>
-        <div className='btn btn-danger' onClick={this.dismissBanner} >X</div>
+        <div>
+           <div className='btn btn-danger' onClick={this.dismissBanner} >X</div>
+           <div className='btn btn-success'  onClick={this.showDetail} >show more</div>
+        </div>
+
+        { this.state.show && <div>detail</div>}
+
+
+
       </div>
     )
   }

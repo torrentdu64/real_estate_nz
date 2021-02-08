@@ -17,17 +17,19 @@ class FlatDetail extends Component {
 
 
    render(){
+     if (!this.state.selectedHouse[0]?.name) {
+        return <span>Loading...</span>;
+    }
     return (
-      <div>
-        <h1>{this.props.selectedHouse.name}</h1>
-        <img src={this.props.selectedHouse.imageUrl} alt={`${this.props.title}'s picture`}  className="img-responsive" />
+      <div className="">
+        <h1>{this.props.selectedHouse[0]?.name}</h1>
+        <img src={this.props.selectedHouse[0]?.imageUrl} alt={`${this.props.selectedHouse[0]?.name}'s picture`}  className="img-responsive" />
       </div>
-
-
     );
   }
+}
 
-  function mapStateToProps(state) {
+function mapStateToProps(state) {
   return {
     selectedHouse: state.selectedHouse
   }

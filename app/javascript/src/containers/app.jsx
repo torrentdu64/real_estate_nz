@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import MapWithList from './map_with_list'
 import FlatBanner from './flat_banner'
+import FlatDetail from './flat_detail'
 
 class App extends React.Component {
   render() {
