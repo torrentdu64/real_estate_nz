@@ -34,7 +34,7 @@ class Flat extends Component {
     return (
 
         <div className={`card ${this.state.cardClicked ? 'active' : ''}`}
-             style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${this.props.flat.imageUrl}')` }}
+             style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('${this.props.flat.image_url}')` }}
              >
           <div className="card-category">{this.props.flat.price} {this.props.flat.priceCurrency}</div>
           <div className="card-description">

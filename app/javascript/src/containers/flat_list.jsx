@@ -29,7 +29,7 @@ class FlatList extends Component {
       return (
         <Flat
           flat={flat}
-          key={flat.lat}
+          key={flat.id}
           index={index}
         />
       );

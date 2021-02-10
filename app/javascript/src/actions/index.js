@@ -5,6 +5,7 @@ export const FETCH_HOUSE = 'FETCH_HOUSE';
 export const SELECTED_HOUSE = 'SELECTED_HOUSE';
 
 
+const BASE_URL = '/api/v1';
 import flats from '../data/flats';
 //import House from '../model/house';
 
@@ -46,7 +47,8 @@ export function fetchPosts() {
 
 export function fetchHouses(){
   // give all flats to the payload
-  const promise = flats;
+  const url = `${BASE_URL}/houses`;
+  const promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
   return {
     type: FETCH_HOUSE,
     payload: promise

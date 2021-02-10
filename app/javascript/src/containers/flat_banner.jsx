@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
+
+import GoogleMapReact from 'google-map-react';
+import Marker from './marker';
+
+
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import FlatDetail from './flat_banner'
+
 
 
 
@@ -65,27 +70,57 @@ class FlatBanner extends Component {
     })
   }
 
-  render(){
+
+
+  renderMap = () => {
+    let  { ...selectedHouseCoordonate }  = {...this.props.selectedHouse[0]}
     return (
+       <GoogleMapReact  defaultZoom={12} >
+         <Marker lat={selectedHouseCoordonate.latitude} lng={selectedHouseCoordonate.longitude} />
+        </GoogleMapReact>
+      )
+  }
+
+
+ //<img src={this.props.selectedHouse[0]?.image_url} alt="" />
+
+
+  render(){
+
+    console.log(this.props.selectedHouse[0])
+    return (
+
       <div
             className={`banner ${this.state.activatedBanner}`}
             id="myHeader"
-            style={{ height: `${this.state.overlay}vh`}}
+
       >
         <div>
            <h3 > { this.props.selectedHouse[0]?.name }</h3>
-           <h3 > { this.props.selectedHouse[0]?.price } { this.props.selectedHouse[0]?.priceCurrency } </h3>
+           <h3 > { this.props.selectedHouse[0]?.price } </h3>
+
+           <div className={this.state.show ? '' : 'detail-none'}>
+             <h4 > { this.props.selectedHouse[0]?.address } </h4>
+
+
+             <div id="map">
+                {this.renderMap()}
+             </div>
+           </div>
+
+
         </div>
         <div>
            <div className='btn btn-danger' onClick={this.dismissBanner} >X</div>
            <div className='btn btn-success'  onClick={this.showDetail} >show more</div>
         </div>
 
-        { this.state.show && <div>detail</div>}
 
 
 
       </div>
+
+
     )
   }
 }
