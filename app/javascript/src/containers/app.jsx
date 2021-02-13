@@ -13,7 +13,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="banner-container">
-          {/* this will either be <GroupsSidebar> or <UsersSidebar> */}
+
           <FlatBanner />
         </div>
         <div className="">
