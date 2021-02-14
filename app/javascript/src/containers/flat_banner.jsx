@@ -15,12 +15,15 @@ class FlatBanner extends Component {
       activatedBanner: [''],
       show: false,
     }
+
+    this.banner = React.createRef()
+    this.unsticky = React.createRef() //document.getElementById('unsticky')
   }
 
   componentWillReceiveProps = async (nextProps) => {
     if(nextProps.selectedHouse[0] ){
 
-      const header = document.getElementById("myHeader");
+      const header = document.getElementById("banner-container");
       header.classList.add('active-banner')
 
 
@@ -92,7 +95,7 @@ class FlatBanner extends Component {
   }
 
   listenToScroll = () => {
-      const header = document.getElementById("myHeader");
+      const header = document.getElementById("banner-container");
       let sticky = header.offsetTop;
       if ( window.pageYOffset < 150 ) {
          header.classList.remove('fixed')
@@ -108,6 +111,7 @@ class FlatBanner extends Component {
   }
 
   dismissBanner = async () => {
+    debugger
      await this.setState({
       show: false
     })
@@ -115,6 +119,9 @@ class FlatBanner extends Component {
     this.setState({
       activatedBanner: ['']
     })
+
+
+
     if(this.state.show === false){
       document.body.classList.remove('noscroll')
     }
@@ -132,9 +139,8 @@ class FlatBanner extends Component {
 
 
   stickyBanner() {
-
-    const banner = document.querySelector('.banner')
-    const heightOfBanner = banner.getBoundingClientRect().height
+    //const banner = document.querySelector('.banner')
+    const heightOfBanner = this.banner.current.getBoundingClientRect().height
     const obsOption = {
       root: null, //null = viewport
       theshold: 0,
@@ -148,17 +154,17 @@ class FlatBanner extends Component {
     }
 
     const bannerObserver = new IntersectionObserver( this.fixedBanner, obsOption)
-    bannerObserver.observe(banner)
+    bannerObserver.observe(this.banner.current)
 
-    const unsticky = document.getElementById('unsticky')
+
+    const unsticky = this.banner.current.offsetParent.childNodes[0]
     const bannerObserver2 = new IntersectionObserver( this.unfixedBanner, obsOption2)
     bannerObserver2.observe(unsticky)
   }
 
-  unfixedBanner([entry]){
+  unfixedBanner = ([entry]) => {
     if (entry.isIntersecting) {
-       const banner = entry.target.nextElementSibling
-       banner.classList.remove('fixed')
+       this.banner.current.classList.remove('fixed')
     }
   }
 
@@ -179,11 +185,11 @@ class FlatBanner extends Component {
 
   render(){
     console.log(this.props.selectedHouse[0])
-
+    //${this.state.activatedBanner}
     return (
-      <div
-            className={`banner ${this.state.activatedBanner}`}
-            id="myHeader"
+      <div  ref={this.banner}
+            className={`banner`}
+            id="banner-container"
       >
         <div className='wrap-detail-hearder'>
           <div>
