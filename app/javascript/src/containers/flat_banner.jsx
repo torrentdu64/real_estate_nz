@@ -19,18 +19,30 @@ class FlatBanner extends Component {
 
   componentWillReceiveProps = async (nextProps) => {
     if(nextProps.selectedHouse[0] ){
-       let sticky = window.pageYOffset;
-      if ( sticky < 150 ) {
-         await this.setState( (state, props) => ({ activatedBanner: ['active-banner'] }))
-      }else{
-         await this.setState( (state, props) => ( { activatedBanner: ['active-banner fixed'] }))
-      }
+
+      const header = document.getElementById("myHeader");
+      header.classList.add('active-banner')
+
+
+      //await this.setState( (state, props) => ({ activatedBanner: ['active-banner'] }))
+      //  let sticky = window.pageYOffset;
+      // if ( sticky < 150 ) {
+      //    await this.setState( (state, props) => ({ activatedBanner: ['active-banner'] }))
+      // }else{
+      //    await this.setState( (state, props) => ( { activatedBanner: ['active-banner fixed'] }))
+      // }
     }
+
+     this.stickyBanner()
+
+
+
   }
 
   componentDidMount() {
-  window.addEventListener('scroll', this.listenToScroll)
-  this.carousel()
+   // this.stickyBanner()
+  //window.addEventListener('scroll', this.listenToScroll)
+  //this.carousel()
   }
 
   carousel(){
@@ -118,11 +130,56 @@ class FlatBanner extends Component {
     }
   }
 
- //
+
+  stickyBanner() {
+
+    const banner = document.querySelector('.banner')
+    const heightOfBanner = banner.getBoundingClientRect().height
+    const obsOption = {
+      root: null, //null = viewport
+      theshold: 0,
+      rootMargin: `-${heightOfBanner + 45}px` // + 45 is the margin apply to parent container
+    }
+
+    const obsOption2 = {
+      root: null, //null = viewport
+      theshold: 0,
+
+    }
+
+    const bannerObserver = new IntersectionObserver( this.fixedBanner, obsOption)
+    bannerObserver.observe(banner)
+
+    const unsticky = document.getElementById('unsticky')
+    const bannerObserver2 = new IntersectionObserver( this.unfixedBanner, obsOption2)
+    bannerObserver2.observe(unsticky)
+  }
+
+  unfixedBanner([entry]){
+    if (entry.isIntersecting) {
+       const banner = entry.target.nextElementSibling
+       banner.classList.remove('fixed')
+    }
+  }
+
+
+
+   fixedBanner = async ([entry]) => {
+      if(!entry.isIntersecting){
+         await entry.target.classList.add('fixed')
+      }
+    }
+
+
+
+
+
+
 
 
   render(){
     console.log(this.props.selectedHouse[0])
+
     return (
       <div
             className={`banner ${this.state.activatedBanner}`}

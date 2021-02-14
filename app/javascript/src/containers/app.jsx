@@ -13,7 +13,7 @@ class App extends React.Component {
     return (
       <div>
         <div className="banner-container">
-
+          <div id="unsticky"></div>
           <FlatBanner />
         </div>
         <div className="">
