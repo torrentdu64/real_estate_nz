@@ -55,7 +55,7 @@
 
 .carousel{
   box-shadow: 2px 2px 5px rgba( 0, 0, 0 , .3);
-  height: 530px;
+ height: 600px;
   width: 800px;
   overflow: hidden;
 }
@@ -64,12 +64,20 @@
   display:flex;
   transform: translateX(0);
   transition: transform 0.5s ease-in-out;
+      margin: 20px;
 }
 
 .photo {
-  width: 800px;
+  width: 200px;
   height: auto;
   object-fit: cover;
+      margin: 20px;
+}
+
+.main-photo {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
 }
 
 .buttons-container{
@@ -77,9 +85,13 @@
   justify-content: space-between;
   position: fixed;
   width: 800px;
+  background:red;
+  position: relative;
+    z-index: 222222222222222222222222222222222222222222;
 }
 
 .carousel-btn{
+   background:blue;
   color: wihte;
   padding: 0.5rem;
   border: none;

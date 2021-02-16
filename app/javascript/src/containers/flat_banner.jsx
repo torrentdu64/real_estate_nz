@@ -15,38 +15,24 @@ class FlatBanner extends Component {
       activatedBanner: [''],
       show: false,
     }
-
     this.banner = React.createRef()
-    this.unsticky = React.createRef() //document.getElementById('unsticky')
+    this.heroImageRef = React.createRef()
+    this.unstickyParent = this.props.unsticky
   }
 
   componentWillReceiveProps = async (nextProps) => {
     if(nextProps.selectedHouse[0] ){
-
-      const header = document.getElementById("banner-container");
-      header.classList.add('active-banner')
-
-
-      //await this.setState( (state, props) => ({ activatedBanner: ['active-banner'] }))
-      //  let sticky = window.pageYOffset;
-      // if ( sticky < 150 ) {
-      //    await this.setState( (state, props) => ({ activatedBanner: ['active-banner'] }))
-      // }else{
-      //    await this.setState( (state, props) => ( { activatedBanner: ['active-banner fixed'] }))
-      // }
+      this.banner.current.classList.add('active-banner')
     }
-
-     this.stickyBanner()
-
-
-
+    this.stickyBanner()
   }
 
   componentDidMount() {
-   // this.stickyBanner()
-  //window.addEventListener('scroll', this.listenToScroll)
-  //this.carousel()
+   this.carousel()
   }
+
+
+
 
   carousel(){
     const imgs = document.getElementById('imgs')
@@ -54,22 +40,36 @@ class FlatBanner extends Component {
     const next = document.getElementById('next')
     const img = document.querySelectorAll('#imgs .photo')
 
-    console.log(img)
-    let idx = 0
-    let interval = setInterval(run , 2000)
 
+    let idx = 0
+    //let interval = setInterval(run , 2000)
+    handleThumbnailClick()
     function run(){
       idx++
       changeImage()
+      handleThumbnailClick()
     }
 
     function changeImage(){
-      if (idx > img.length - 1){
+      console.log('changeImage', idx)
+      if (idx > 1 ){ // (img.length - 1)
         idx = 0
-      }else if (idx < 0){
-        idx = img.length - 1
+      }else if (idx < 0 ){
+        idx = 1
       }
-      imgs.style.transform = `translateX(${idx * -800}px)`
+      imgs.style.transform = `translateX(${idx * -200}px)`
+    }
+
+    function handleThumbnailClick(){
+      img.forEach( thumb => {
+        thumb.addEventListener('click' , (e) =>{
+           displayHeroImage(e.srcElement.currentSrc)
+        })
+      })
+    }
+
+    function displayHeroImage(url){
+       document.getElementById('hero-image').src = url
     }
 
     function resetInterval(){
@@ -80,51 +80,40 @@ class FlatBanner extends Component {
     next.addEventListener('click', ( ) => {
       idx++
       changeImage()
-      resetInterval()
+      //resetInterval()
     })
 
     prev.addEventListener('click', ( ) => {
       idx--
       changeImage()
-      resetInterval()
+      //resetInterval()
     })
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.listenToScroll)
-  }
 
-  listenToScroll = () => {
-      const header = document.getElementById("banner-container");
-      let sticky = header.offsetTop;
-      if ( window.pageYOffset < 150 ) {
-         header.classList.remove('fixed')
-      }
-      else  {
-        header.classList.add('fixed')
-        if(this.state.show){
 
-         document.body.classList.add('noscroll')
-        }
-      }
 
-  }
 
   dismissBanner = async () => {
-    debugger
-     await this.setState({
-      show: false
-    })
 
-    this.setState({
-      activatedBanner: ['']
-    })
+    //  await this.setState({
+    //   show: false
+    // })
 
+    // this.setState({
+    //   activatedBanner: ['']
+    // })
 
+    //this.banner.current.classList.remove('fixed')
+    this.banner.current.classList.remove('active-banner')
 
-    if(this.state.show === false){
-      document.body.classList.remove('noscroll')
-    }
+    this.stickyBanner()
+    //this.banner.current.classList.remove('fixed')
+    //debugger
+
+    // if(this.state.show === false){
+    //   document.body.classList.remove('noscroll')
+    // }
   }
 
   showDetail = async  () => {
@@ -132,47 +121,68 @@ class FlatBanner extends Component {
       show: !this.state.show
     })
 
-    if(this.state.show === false){
-      document.body.classList.remove('noscroll')
-    }
+
+
+    // if(this.state.show === false){
+    //   document.body.classList.remove('noscroll')
+    // }
   }
 
 
-  stickyBanner() {
+  stickyBanner =  () => {
     //const banner = document.querySelector('.banner')
+     const test = document.querySelector('.banner-container').getBoundingClientRect().height
+
     const heightOfBanner = this.banner.current.getBoundingClientRect().height
-    const obsOption = {
+    let obsOption = {
       root: null, //null = viewport
-      theshold: 0,
-      rootMargin: `-${heightOfBanner + 45}px` // + 45 is the margin apply to parent container
+      theshold: 1,
+      rootMargin: `-${test + 45}px`,//`-${heightOfBanner + 45}px` // + 45 is the margin apply to parent container
+      trackVisibility: true,
+      delay: 100
     }
 
-    const obsOption2 = {
+    let obsOption2 = {
       root: null, //null = viewport
-      theshold: 0,
-
+      theshold: 1,
     }
 
-    const bannerObserver = new IntersectionObserver( this.fixedBanner, obsOption)
-    bannerObserver.observe(this.banner.current)
+    let bannerObserver =  new IntersectionObserver( this.fixedBanner  , obsOption)
 
+     bannerObserver.observe(this.banner.current)
 
-    const unsticky = this.banner.current.offsetParent.childNodes[0]
-    const bannerObserver2 = new IntersectionObserver( this.unfixedBanner, obsOption2)
-    bannerObserver2.observe(unsticky)
+    //bannerObserver.root.style.border = "2px solid #44aa44";
+    // buggy need some search about Parent Ref
+    //const unsticky = this.banner.current.parentNode.childNodes[0]
+
+    const unsticky = document.getElementById('unsticky')
+    let bannerObserver2 =  new IntersectionObserver( this.unfixedBanner, obsOption2)
+     bannerObserver2.observe(unsticky)
   }
 
-  unfixedBanner = ([entry]) => {
+  unfixedBanner = ([entry], observer) => {
+     console.log('1 unfixedBanner method call')
     if (entry.isIntersecting) {
-       this.banner.current.classList.remove('fixed')
+        console.log('2 banner remove top bar result true' )
+        this.banner.current.classList.remove('fixed')
+        //observer.unobserve(entry.target)
     }
+    console.log('2 banner still sticky result false')
   }
 
+  switchPinBanner(){
 
+  }
+  //
 
-   fixedBanner = async ([entry]) => {
+   fixedBanner =(entries, observer) => {
+   const [entry] = entries
+
+    console.log('1 fixedbanner method call')
       if(!entry.isIntersecting){
-         await entry.target.classList.add('fixed')
+          console.log('2 banner fixed top result false' )
+           entry.target.classList.add('fixed')
+          //observer.disconnect(entry.target)
       }
     }
 
@@ -206,7 +216,14 @@ class FlatBanner extends Component {
                <h4 > { this.props.selectedHouse[0]?.address } </h4>
                <div className='wrap-image-detail'>
                 <div className="carousel">
+                <div className="hero-image">
+                  <img src={this.props.selectedHouse[0]?.image_url} alt="" className='main-photo' ref={ this.heroImageRef } id="hero-image"/>
+                </div>
                   <div className="image-container" id="imgs">
+
+
+
+
                    <img
                       src={this.props.selectedHouse[0]?.image_url}
                       alt={ this.props.selectedHouse[0]?.name }
@@ -227,12 +244,15 @@ class FlatBanner extends Component {
                       alt={ this.props.selectedHouse[0]?.name }
                       className='photo'
                   />
+
                   </div>
-                  <div className="buttons-container">
+
+
+                </div>
+                <div className="buttons-container">
                       <button className="carousel-btn" id="prev">prev</button>
                       <button className="carousel-btn" id="next">next</button>
                   </div>
-                </div>
                </div>
              </div>
           </div>
