@@ -14,22 +14,43 @@ House.destroy_all
 
 puts "Created house"
 
+var_json_string = "[{'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg'},
+{'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat2.jpg'},
+{'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat3.jpg'},
+{'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat4.jpg'},
+{'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat5.jpg'},
+{'https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat6.jpg'}]"
+
+
+ var_json_string = { src: ["https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg",
+                           "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat2.jpg",
+                            "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat3.jpg",
+                            "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat4.jpg",
+                            "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat5.jpg",
+                            "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat6.jpg",
+                         ]
+                    }
+
+
+valid_json = var_json_string
+
 
 House.create!(
     name: 'Trendy Apt in Buttes Montmartre',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat2.jpg",
+    image_urls: valid_json,
     address: '2-8 Rue du Cardinal Guibert 75018 Paris France',
      user_id: 1,
      price: '200',
      latitude: 48.885707,
      longitude: 2.343543
+
 )
 
 House.create!(
     name: 'Super 60m2 in trendy neighborhood!',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat3.jpg",
+    image_urls: valid_json,
     address: 'Boulevard de Clichy 75018 Paris France',
      user_id: 1,
      price: '170',
@@ -41,7 +62,7 @@ House.create!(
 House.create!(
     name: 'Splendide terrasse vue imprenable',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat4.jpg",
+    image_urls: valid_json,
     address: 'Rue Damrémont 75018 Paris France',
      user_id: 1,
      price: '150',
@@ -52,7 +73,7 @@ House.create!(
 House.create!(
     name: 'Superbe vue à 2 min du Sacré Coeur',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat5.jpg",
+    image_urls: valid_json,
     address: 'Rue doumont 75018 Paris France',
      user_id: 1,
      price: '120',
@@ -63,8 +84,7 @@ House.create!(
   House.create!(
     name: 'Castel du Sacré Coeur',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat6.jpg",
-    address: 'Versaille 75018 Paris France',
+    image_urls: valid_json,
      user_id: 1,
      price: '120',
      latitude: 48.327865,
@@ -74,7 +94,7 @@ House.create!(
   House.create!(
     name: 'cabane au fond du jardin',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg",
+    image_urls: valid_json,
     address: 'Marée 75018 Paris France',
      user_id: 1,
      price: '120',
@@ -85,7 +105,7 @@ House.create!(
   House.create!(
     name: 'La maison blue',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat1.jpg",
+    image_urls: valid_json,
     address: 'Aglo couleur 75018 Paris France',
      user_id: 1,
      price: '120',
@@ -96,7 +116,7 @@ House.create!(
    House.create!(
     name: 'Appart cosy',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat2.jpg",
+    image_urls: valid_json,
     address: '8 rue rosier 75018 Paris France',
      user_id: 1,
      price: '120',
@@ -108,7 +128,7 @@ House.create!(
  House.create!(
     name: 'Bonheur au beau soleil',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat3.jpg",
+    image_urls: valid_json,
     address: '3 soleil street 75018 Paris France',
      user_id: 1,
      price: '120',
@@ -119,7 +139,7 @@ House.create!(
  House.create!(
     name: 'Bohemian and Chic in Paris',
     rating: 5 ,
-    image_url: "https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat4.jpg",
+    image_urls: valid_json,
     address: '2 route de la caravane 75018 Paris France',
      user_id: 1,
      price: '120',

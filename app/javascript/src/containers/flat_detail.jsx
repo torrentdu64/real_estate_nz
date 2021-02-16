@@ -23,7 +23,7 @@ class FlatDetail extends Component {
     return (
       <div className="">
         <h1>{this.props.selectedHouse[0]?.name}</h1>
-        <img src={this.props.selectedHouse[0]?.imageUrl} alt={`${this.props.selectedHouse[0]?.name}'s picture`}  className="img-responsive" />
+        <img src={this.props.selectedHouse[0]?.imageUrls[0]} alt={`${this.props.selectedHouse[0]?.name}'s picture`}  className="img-responsive" />
       </div>
     );
   }

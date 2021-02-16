@@ -38,39 +38,31 @@ class FlatBanner extends Component {
     const imgs = document.getElementById('imgs')
     const prev = document.getElementById('prev')
     const next = document.getElementById('next')
-    const img = document.querySelectorAll('#imgs .photo')
+
 
 
     let idx = 0
     //let interval = setInterval(run , 2000)
-    handleThumbnailClick()
+
     function run(){
       idx++
       changeImage()
-      handleThumbnailClick()
+
     }
 
     function changeImage(){
       console.log('changeImage', idx)
-      if (idx > 1 ){ // (img.length - 1)
+      if (idx > 3 ){ // (img.length - 1)
         idx = 0
       }else if (idx < 0 ){
-        idx = 1
+        idx = 3
       }
-      imgs.style.transform = `translateX(${idx * -200}px)`
+      imgs.style.transform = `translateX(${idx * -220}px)`
     }
 
-    function handleThumbnailClick(){
-      img.forEach( thumb => {
-        thumb.addEventListener('click' , (e) =>{
-           displayHeroImage(e.srcElement.currentSrc)
-        })
-      })
-    }
 
-    function displayHeroImage(url){
-       document.getElementById('hero-image').src = url
-    }
+
+
 
     function resetInterval(){
       clearInterval(interval)
@@ -170,10 +162,7 @@ class FlatBanner extends Component {
     console.log('2 banner still sticky result false')
   }
 
-  switchPinBanner(){
 
-  }
-  //
 
    fixedBanner =(entries, observer) => {
    const [entry] = entries
@@ -186,7 +175,9 @@ class FlatBanner extends Component {
       }
     }
 
-
+    showHero(e){
+     document.getElementById('hero-image').src =  e.target.currentSrc
+    }
 
 
 
@@ -217,33 +208,22 @@ class FlatBanner extends Component {
                <div className='wrap-image-detail'>
                 <div className="carousel">
                 <div className="hero-image">
-                  <img src={this.props.selectedHouse[0]?.image_url} alt="" className='main-photo' ref={ this.heroImageRef } id="hero-image"/>
+                  <img src={this.props.selectedHouse[0]?.image_urls.src[0]} alt="" className='main-photo' ref={ this.heroImageRef } id="hero-image"/>
                 </div>
                   <div className="image-container" id="imgs">
 
+                 { this.props.selectedHouse[0]?.image_urls.src.map(  (img, index)  => {
+                                     return  <img
+
+                                               key={index}
+                                               src={img}
+                                               alt={ this.props.selectedHouse[0]?.name }
+                                               className='photo'
+                                               onClick={this.showHero}
+                                           />
+                                   })}
 
 
-
-                   <img
-                      src={this.props.selectedHouse[0]?.image_url}
-                      alt={ this.props.selectedHouse[0]?.name }
-                      className='photo'
-                  />
-                   <img
-                      src='https://raw.githubusercontent.com/lewagon/flats-boilerplate/master/images/flat3.jpg'
-                      alt={ this.props.selectedHouse[0]?.name }
-                      className='photo'
-                  />
-                   <img
-                      src={this.props.selectedHouse[0]?.image_url}
-                      alt={ this.props.selectedHouse[0]?.name }
-                      className='photo'
-                  />
-                   <img
-                      src={this.props.selectedHouse[0]?.image_url}
-                      alt={ this.props.selectedHouse[0]?.name }
-                      className='photo'
-                  />
 
                   </div>
 
