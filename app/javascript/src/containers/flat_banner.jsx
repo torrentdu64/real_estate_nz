@@ -12,9 +12,9 @@ class FlatBanner extends Component {
     super(props);
 
     this.state = {
-      activatedBanner: [''],
       show: false,
     }
+
     this.banner = React.createRef()
     this.heroImageRef = React.createRef()
     this.unstickyParent = this.props.unsticky
@@ -88,9 +88,9 @@ class FlatBanner extends Component {
 
   dismissBanner = async () => {
 
-    //  await this.setState({
-    //   show: false
-    // })
+     await this.setState({
+      show: false
+    })
 
     // this.setState({
     //   activatedBanner: ['']
@@ -106,6 +106,8 @@ class FlatBanner extends Component {
     // if(this.state.show === false){
     //   document.body.classList.remove('noscroll')
     // }
+   document.body.classList.remove('noscroll')
+      document.getElementById('banner-container').style.height = 'auto'
   }
 
   showDetail = async  () => {
@@ -113,25 +115,29 @@ class FlatBanner extends Component {
       show: !this.state.show
     })
 
-
-
-    // if(this.state.show === false){
-    //   document.body.classList.remove('noscroll')
-    // }
+    if(this.state.show){
+      document.body.classList.add('noscroll')
+      if(document.getElementById('banner-container').classList.contains('fixed')){
+        document.getElementById('banner-container').style.height ='100vh'
+      }else{
+        document.getElementById('banner-container').style.height ='85vh'
+      }
+    }else{
+      document.body.classList.remove('noscroll')
+      document.getElementById('banner-container').style.height = 'auto'
+    }
   }
 
 
   stickyBanner =  () => {
     //const banner = document.querySelector('.banner')
-     const test = document.querySelector('.banner-container').getBoundingClientRect().height
+     const test = document.querySelector('.banner-container')
 
     const heightOfBanner = this.banner.current.getBoundingClientRect().height
     let obsOption = {
       root: null, //null = viewport
       theshold: 1,
-      rootMargin: `-${test + 45}px`,//`-${heightOfBanner + 45}px` // + 45 is the margin apply to parent container
-      trackVisibility: true,
-      delay: 100
+      rootMargin: `-${heightOfBanner + 10}px`,//`-${heightOfBanner + 45}px` // + 45 is the margin apply to parent container
     }
 
     let obsOption2 = {
@@ -141,43 +147,57 @@ class FlatBanner extends Component {
 
     let bannerObserver =  new IntersectionObserver( this.fixedBanner  , obsOption)
 
-     bannerObserver.observe(this.banner.current)
+     bannerObserver.observe(test)
 
     //bannerObserver.root.style.border = "2px solid #44aa44";
     // buggy need some search about Parent Ref
     //const unsticky = this.banner.current.parentNode.childNodes[0]
 
-    const unsticky = document.getElementById('unsticky')
-    let bannerObserver2 =  new IntersectionObserver( this.unfixedBanner, obsOption2)
-     bannerObserver2.observe(unsticky)
+    // const unsticky = document.getElementById('unsticky')
+
+    // let bannerObserver2 =  new IntersectionObserver( this.unfixedBanner, obsOption2)
+    //  bannerObserver2.observe(unsticky)
   }
 
   unfixedBanner = ([entry], observer) => {
-     console.log('1 unfixedBanner method call')
+
     if (entry.isIntersecting) {
-        console.log('2 banner remove top bar result true' )
+
         this.banner.current.classList.remove('fixed')
         //observer.unobserve(entry.target)
     }
-    console.log('2 banner still sticky result false')
+
   }
 
 
 
-   fixedBanner =(entries, observer) => {
+   fixedBanner = (entries, observer) => {
    const [entry] = entries
 
-    console.log('1 fixedbanner method call')
+
       if(!entry.isIntersecting){
-          console.log('2 banner fixed top result false' )
-           entry.target.classList.add('fixed')
+
+           this.banner.current.classList.add('fixed')
           //observer.disconnect(entry.target)
+      }else {
+
+        this.banner.current.classList.remove('fixed')
       }
     }
 
     showHero(e){
      document.getElementById('hero-image').src =  e.target.currentSrc
     }
+
+    defaultCenter() {
+        return {
+          lat: 48.885707,
+          lng: 2.343543
+        };
+      }
+
+
+
 
 
 
@@ -187,6 +207,7 @@ class FlatBanner extends Component {
   render(){
     console.log(this.props.selectedHouse[0])
     //${this.state.activatedBanner}
+    let  selectedHouseCoordonate   = {...this.props.selectedHouse[0]}
     return (
       <div  ref={this.banner}
             className={`banner`}
@@ -211,7 +232,6 @@ class FlatBanner extends Component {
                   <img src={this.props.selectedHouse[0]?.image_urls.src[0]} alt="" className='main-photo' ref={ this.heroImageRef } id="hero-image"/>
                 </div>
                   <div className="image-container" id="imgs">
-
                  { this.props.selectedHouse[0]?.image_urls.src.map(  (img, index)  => {
                                      return  <img
 
@@ -222,19 +242,30 @@ class FlatBanner extends Component {
                                                onClick={this.showHero}
                                            />
                                    })}
-
-
-
                   </div>
 
 
                 </div>
-                <div className="buttons-container">
-                      <button className="carousel-btn" id="prev">prev</button>
-                      <button className="carousel-btn" id="next">next</button>
+
+                 <div className="buttons-container">
+                        <button className="carousel-btn" id="prev">prev</button>
+                        <button className="carousel-btn" id="next">next</button>
                   </div>
+
                </div>
+
              </div>
+
+            <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >
+             <Marker lat={selectedHouseCoordonate.lat} lng={selectedHouseCoordonate.lng} />
+            </GoogleMapReact>
+
+              <h3 > { this.props.selectedHouse[0]?.name }</h3>
+           <h3 > { this.props.selectedHouse[0]?.price } </h3>
+            <h3 > { this.props.selectedHouse[0]?.name }</h3>
+           <h3 > { this.props.selectedHouse[0]?.price } </h3>
+            <h3 > { this.props.selectedHouse[0]?.name }</h3>
+           <h3 > { this.props.selectedHouse[0]?.price } </h3>
           </div>
       </div>
     )

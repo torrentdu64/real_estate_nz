@@ -19,6 +19,9 @@
   display: grid;
   grid-template-rows: auto auto;
   z-index: 5;
+  overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+
 }
 
 .fixed {
@@ -40,7 +43,6 @@
 .wrap-detail{
     display: grid;
     grid-template-columns: 35% 65%;
-    height: 100vh;
 }
 
 .wrap-image-detail{
@@ -87,7 +89,7 @@
   width: 800px;
   background:red;
   position: relative;
-    z-index: 222222222222222222222222222222222222222222;
+
 }
 
 .carousel-btn{
