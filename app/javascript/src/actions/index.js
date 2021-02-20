@@ -3,6 +3,7 @@ export const FETCH_POST = 'FETCH_POST';
 export const POST_CREATED = 'POST_CREATED';
 export const FETCH_HOUSE = 'FETCH_HOUSE';
 export const SELECTED_HOUSE = 'SELECTED_HOUSE';
+export const PAGINATE_HOUSE = 'PAGINATE_HOUSE';
 
 
 const BASE_URL = '/api/v1';
@@ -45,11 +46,24 @@ export function fetchPosts() {
   }
 }
 
+export function paginateHouses(page){
+  // give all flats to the payload
+  let url = `${BASE_URL}/houses?page=${page}`;
+  let promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
+  console.log('paginateHouses', promise)
+  debugger
+
+  return {
+    type: PAGINATE_HOUSE,
+    payload: promise
+  }
+}
+
 export function fetchHouses(){
   // give all flats to the payload
   const url = `${BASE_URL}/houses`;
   const promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
-  console.log(promise)
+  console.log('fetchHouses', promise)
 
 
   return {

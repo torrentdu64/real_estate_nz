@@ -1,9 +1,13 @@
-import { FETCH_HOUSE } from '../actions';
+import { FETCH_HOUSE , PAGINATE_HOUSE } from '../actions';
 
 export default function(houseState = [], action) {
   switch(action.type) {
     case FETCH_HOUSE:
       return action.payload;
+    case PAGINATE_HOUSE:
+      const test = [ ...houseState,  ...action.payload ];
+      debugger
+     return [ ...houseState,  ...action.payload ];
     default:
       return houseState;
   }

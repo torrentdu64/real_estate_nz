@@ -4,12 +4,15 @@ import Flat from './flat';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchHouses } from '../actions';
+import { fetchHouses, paginateHouses } from '../actions';
 
 class FlatList extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      page: 2
+    }
   }
 
   componentWillMount() {
@@ -17,6 +20,11 @@ class FlatList extends Component {
     if (this.props.houses.length === 0) {
       this.props.fetchHouses();
     }
+  }
+
+  loadMoreHouses = () =>{
+    this.props.paginateHouses(this.state.page)
+    this.setState({ page: this.state.page + 1 })
   }
 
   renderList() {
@@ -32,6 +40,7 @@ class FlatList extends Component {
           key={flat.id}
           index={index}
         />
+
       );
     });
   };
@@ -41,6 +50,9 @@ class FlatList extends Component {
     return (
       <div className="cards">
         { this.renderList() }
+        <div>
+          <button onClick={this.loadMoreHouses} >Load More</button>
+        </div>
       </div>
     );
   }
@@ -53,7 +65,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchHouses }, dispatch);
+  return bindActionCreators({ fetchHouses, paginateHouses }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlatList);
