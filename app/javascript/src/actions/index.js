@@ -50,8 +50,7 @@ export function paginateHouses(page){
   // give all flats to the payload
   let url = `${BASE_URL}/houses?page=${page}`;
   let promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
-  console.log('paginateHouses', promise)
-  debugger
+
 
   return {
     type: PAGINATE_HOUSE,

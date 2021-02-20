@@ -117,10 +117,17 @@ class FlatBanner extends Component {
 
     if(this.state.show){
       document.body.classList.add('noscroll')
+
+      let heightAvailable = window.innerHeight
+      let test = document.getElementById('banner-container')
+      let h = this.banner.current.getBoundingClientRect().y
+      debugger
       if(document.getElementById('banner-container').classList.contains('fixed')){
-        document.getElementById('banner-container').style.height ='100vh'
+        //document.getElementById('banner-container').style.height ='100vh'
+        document.getElementById('banner-container').style.height =`${heightAvailable}px`
       }else{
-        document.getElementById('banner-container').style.height ='85vh'
+        //document.getElementById('banner-container').style.height ='85vh'
+        document.getElementById('banner-container').style.height = `${heightAvailable - this.banner.current.getBoundingClientRect().y}px`
       }
     }else{
       document.body.classList.remove('noscroll')
@@ -259,13 +266,15 @@ class FlatBanner extends Component {
             <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >
              <Marker lat={selectedHouseCoordonate.lat} lng={selectedHouseCoordonate.lng} />
             </GoogleMapReact>
+            <div>
+               <h3 > { this.props.selectedHouse[0]?.name }</h3>
+            <h3 > { this.props.selectedHouse[0]?.price } </h3>
+            <h3 > { this.props.selectedHouse[0]?.name }</h3>
+           <h3 > { this.props.selectedHouse[0]?.price } </h3>
+            <h3 > { this.props.selectedHouse[0]?.name }</h3>
+           <h3 > { this.props.selectedHouse[0]?.price } </h3>
+            </div>
 
-              <h3 > { this.props.selectedHouse[0]?.name }</h3>
-           <h3 > { this.props.selectedHouse[0]?.price } </h3>
-            <h3 > { this.props.selectedHouse[0]?.name }</h3>
-           <h3 > { this.props.selectedHouse[0]?.price } </h3>
-            <h3 > { this.props.selectedHouse[0]?.name }</h3>
-           <h3 > { this.props.selectedHouse[0]?.price } </h3>
           </div>
       </div>
     )

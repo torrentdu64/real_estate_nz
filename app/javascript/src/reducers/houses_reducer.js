@@ -5,8 +5,6 @@ export default function(houseState = [], action) {
     case FETCH_HOUSE:
       return action.payload;
     case PAGINATE_HOUSE:
-      const test = [ ...houseState,  ...action.payload ];
-      debugger
      return [ ...houseState,  ...action.payload ];
     default:
       return houseState;
