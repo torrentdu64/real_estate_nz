@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './marker';
 
+import ThumbnailCarousel from './thumbnail_carousel';
+
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -10,15 +12,14 @@ import { connect } from 'react-redux';
 class FlatBanner extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       show: false,
     }
-
     this.banner = React.createRef()
     this.heroImageRef = React.createRef()
-    this.unstickyParent = this.props.unsticky
   }
+
+
 
   componentWillReceiveProps = async (nextProps) => {
     if(nextProps.selectedHouse[0] ){
@@ -31,18 +32,12 @@ class FlatBanner extends Component {
    this.carousel()
   }
 
-
-
-
   carousel(){
     const imgs = document.getElementById('imgs')
     const prev = document.getElementById('prev')
     const next = document.getElementById('next')
 
-
-
     let idx = 0
-    //let interval = setInterval(run , 2000)
 
     function run(){
       idx++
@@ -60,86 +55,43 @@ class FlatBanner extends Component {
       imgs.style.transform = `translateX(${idx * -220}px)`
     }
 
-
-
-
-
-    function resetInterval(){
-      clearInterval(interval)
-      interval = setInterval(run , 2000)
-    }
-
     next.addEventListener('click', ( ) => {
       idx++
       changeImage()
-      //resetInterval()
     })
 
     prev.addEventListener('click', ( ) => {
       idx--
       changeImage()
-      //resetInterval()
     })
   }
 
-
-
-
-
   dismissBanner = async () => {
-
-     await this.setState({
-      show: false
-    })
-
-    // this.setState({
-    //   activatedBanner: ['']
-    // })
-
-    //this.banner.current.classList.remove('fixed')
-    this.banner.current.classList.remove('active-banner')
-
-    this.stickyBanner()
-    //this.banner.current.classList.remove('fixed')
-    //debugger
-
-    // if(this.state.show === false){
-    //   document.body.classList.remove('noscroll')
-    // }
+   await this.setState({ show: false})
+   this.banner.current.classList.remove('active-banner')
+   this.stickyBanner()
    document.body.classList.remove('noscroll')
-      document.getElementById('banner-container').style.height = 'auto'
+   this.banner.current.style.height = 'auto'
   }
 
   showDetail = async  () => {
-    await this.setState({
-      show: !this.state.show
-    })
-
+    await this.setState({show: !this.state.show})
     if(this.state.show){
       document.body.classList.add('noscroll')
-
       let heightAvailable = window.innerHeight
-      let test = document.getElementById('banner-container')
-      let h = this.banner.current.getBoundingClientRect().y
-      debugger
-      if(document.getElementById('banner-container').classList.contains('fixed')){
-        //document.getElementById('banner-container').style.height ='100vh'
-        document.getElementById('banner-container').style.height =`${heightAvailable}px`
-      }else{
-        //document.getElementById('banner-container').style.height ='85vh'
-        document.getElementById('banner-container').style.height = `${heightAvailable - this.banner.current.getBoundingClientRect().y}px`
-      }
+      this.banner.current.classList.contains('fixed') ?
+      this.banner.current.style.height =`${heightAvailable}px`
+      :
+       this.banner.current.style.height = `${heightAvailable - this.banner.current.getBoundingClientRect().y}px`
     }else{
       document.body.classList.remove('noscroll')
-      document.getElementById('banner-container').style.height = 'auto'
+      this.banner.current.style.height = 'auto'
     }
   }
 
 
   stickyBanner =  () => {
-    //const banner = document.querySelector('.banner')
-     const test = document.querySelector('.banner-container')
-
+    const bannerContainer = this.banner.current.parentElement
     const heightOfBanner = this.banner.current.getBoundingClientRect().height
     let obsOption = {
       root: null, //null = viewport
@@ -147,53 +99,26 @@ class FlatBanner extends Component {
       rootMargin: `-${heightOfBanner + 10}px`,//`-${heightOfBanner + 45}px` // + 45 is the margin apply to parent container
     }
 
-    let obsOption2 = {
-      root: null, //null = viewport
-      theshold: 1,
-    }
-
     let bannerObserver =  new IntersectionObserver( this.fixedBanner  , obsOption)
-
-     bannerObserver.observe(test)
-
-    //bannerObserver.root.style.border = "2px solid #44aa44";
-    // buggy need some search about Parent Ref
-    //const unsticky = this.banner.current.parentNode.childNodes[0]
-
-    // const unsticky = document.getElementById('unsticky')
-
-    // let bannerObserver2 =  new IntersectionObserver( this.unfixedBanner, obsOption2)
-    //  bannerObserver2.observe(unsticky)
+     bannerObserver.observe(bannerContainer)
   }
 
   unfixedBanner = ([entry], observer) => {
-
     if (entry.isIntersecting) {
-
         this.banner.current.classList.remove('fixed')
-        //observer.unobserve(entry.target)
     }
-
   }
 
-
-
-   fixedBanner = (entries, observer) => {
-   const [entry] = entries
-
-
+   fixedBanner = ([entry], observer) => {
       if(!entry.isIntersecting){
-
            this.banner.current.classList.add('fixed')
-          //observer.disconnect(entry.target)
       }else {
-
         this.banner.current.classList.remove('fixed')
       }
     }
 
-    showHero(e){
-     document.getElementById('hero-image').src =  e.target.currentSrc
+    showHero = (e) => {
+     this.heroImageRef.current.src =  e.target.currentSrc
     }
 
     defaultCenter() {
@@ -203,17 +128,9 @@ class FlatBanner extends Component {
         };
       }
 
-
-
-
-
-
-
-
-
   render(){
-    console.log(this.props.selectedHouse[0])
-    //${this.state.activatedBanner}
+    // console.log(this.props.selectedHouse[0])
+    // //${this.state.activatedBanner}
     let  selectedHouseCoordonate   = {...this.props.selectedHouse[0]}
     return (
       <div  ref={this.banner}
@@ -236,19 +153,15 @@ class FlatBanner extends Component {
                <div className='wrap-image-detail'>
                 <div className="carousel">
                 <div className="hero-image">
-                  <img src={this.props.selectedHouse[0]?.image_urls.src[0]} alt="" className='main-photo' ref={ this.heroImageRef } id="hero-image"/>
+                  <img src={this.props.selectedHouse[0]?.image_urls.src[0]} alt="" className='main-photo' ref={this.heroImageRef } id="hero-image"/>
                 </div>
                   <div className="image-container" id="imgs">
-                 { this.props.selectedHouse[0]?.image_urls.src.map(  (img, index)  => {
-                                     return  <img
-
-                                               key={index}
-                                               src={img}
-                                               alt={ this.props.selectedHouse[0]?.name }
-                                               className='photo'
-                                               onClick={this.showHero}
-                                           />
-                                   })}
+                   { this.props.selectedHouse[0]?.image_urls.src.map(  (img, index)  =>
+                     {
+                        return <ThumbnailCarousel key={index} src={img}  alt={ this.props.selectedHouse[0]?.name } showHero={this.showHero} />
+                      }
+                    )
+                   }
                   </div>
 
 

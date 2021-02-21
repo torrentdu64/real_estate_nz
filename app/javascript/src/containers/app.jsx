@@ -12,23 +12,20 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.unsticky = React.createRef()
+    this.bannerContainer = React.createRef()
   }
 
   render() {
     // the matched child route components become props in the parent
     return (
       <div >
-        <div className="banner-container">
-          <div ref={this.unsticky} id='unsticky'></div>
-          <FlatBanner unsticky={this.unsticky} />
+        <div className="banner-container" ref={this.bannerContainer}>
+          <FlatBanner bannerContainer={this.bannerContainer} />
         </div>
         <div className="">
           {/* this will either be <Groups> or <Users> */}
-
           <MapWithList />
         </div>
-
       </div>
     )
   }
