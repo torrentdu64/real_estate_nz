@@ -163,8 +163,6 @@ class FlatBanner extends Component {
                     )
                    }
                   </div>
-
-
                 </div>
 
                  <div className="buttons-container">
@@ -173,7 +171,6 @@ class FlatBanner extends Component {
                   </div>
 
                </div>
-
              </div>
 
             <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >

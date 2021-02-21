@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import flats from '../data/flats';
 import FlatList from './flat_list';
 import Marker from './marker';
+
+import {   paginateHouses } from '../actions';
 
 
 class MapWithList extends Component {
@@ -14,8 +17,14 @@ class MapWithList extends Component {
     super(props);
     this.state = {
       selectedFlat: flats[0],
-      flats
+      flats,
+      page: 2
     };
+  }
+
+  loadMoreHouses = () =>{
+    this.props.paginateHouses(this.state.page)
+    this.setState({ page: this.state.page + 1 })
   }
 
   defaultCenter() {
@@ -41,7 +50,10 @@ class MapWithList extends Component {
 
     return (
       <div className="main-container">
-        <FlatList   />
+        <div>
+          <FlatList   />
+          <button onClick={this.loadMoreHouses} >Load More</button>
+        </div>
         <div id="map">
          {this.renderMap()}
         </div>
@@ -56,5 +68,9 @@ function mapStateToProps(state) {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ paginateHouses }, dispatch);
+}
 
-export default connect(mapStateToProps, null)(MapWithList);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapWithList);

@@ -10,9 +10,9 @@ class FlatList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      page: 2
-    }
+    // this.state = {
+    //   page: 2
+    // }
   }
 
   componentWillMount() {
@@ -22,10 +22,10 @@ class FlatList extends Component {
     }
   }
 
-  loadMoreHouses = () =>{
-    this.props.paginateHouses(this.state.page)
-    this.setState({ page: this.state.page + 1 })
-  }
+  // loadMoreHouses = () =>{
+  //   this.props.paginateHouses(this.state.page)
+  //   this.setState({ page: this.state.page + 1 })
+  // }
 
   renderList() {
      return this.props.houses.map((flat, index) => {
@@ -50,9 +50,9 @@ class FlatList extends Component {
     return (
       <div className="cards">
         { this.renderList() }
-        <div>
+        {/*<div>
           <button onClick={this.loadMoreHouses} >Load More</button>
-        </div>
+        </div>*/}
       </div>
     );
   }
