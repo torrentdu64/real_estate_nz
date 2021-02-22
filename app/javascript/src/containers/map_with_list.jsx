@@ -22,7 +22,22 @@ class MapWithList extends Component {
     };
   }
 
-  loadMoreHouses = () =>{
+  componentWillReceiveProps = async (nextProps) => {
+    if(this.props.houses !== nextProps.houses){
+
+
+      let listOfCoord = []
+      nextProps.houses.map( house => {
+
+        listOfCoord.push([house.latitude, house.longitude])
+
+
+      })
+      console.log(listOfCoord)
+    }
+  }
+
+  loadMoreHouses = () => {
     this.props.paginateHouses(this.state.page)
     this.setState({ page: this.state.page + 1 })
   }
@@ -40,8 +55,11 @@ class MapWithList extends Component {
 
 
     return (
-       <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >
-         <Marker lat={selectedHouseCoordonate.lat} lng={selectedHouseCoordonate.lng} />
+       <GoogleMapReact  defaultZoom={14} defaultCenter={this.defaultCenter()} >
+        { this.props.houses.map( ({latitude: lat, longitude: lng}) => {
+          debugger
+          return  <Marker key={lat} lat={lat} lng={lng} />
+        })}
         </GoogleMapReact>
       )
   }
@@ -64,6 +82,7 @@ class MapWithList extends Component {
 
 function mapStateToProps(state) {
   return {
+    houses: state.houses,
     selectedHouse: state.selectedHouse
   }
 }

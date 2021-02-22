@@ -11,8 +11,6 @@ import "channels"
 
 
 
-import Hello from './hello_react'
-import "src"
 
 Rails.start()
 Turbolinks.start()
@@ -26,6 +24,9 @@ ActiveStorage.start()
 
 // External imports
 import "bootstrap";
+
+import "nz-map";
+import "src";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';

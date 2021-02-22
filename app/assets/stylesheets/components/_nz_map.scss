@@ -1,0 +1,33 @@
+
+.nz-map{
+  display: grid;
+  grid-template-columns: 70% 1fr;
+  overflow: hidden;
+  height: 550px;
+}
+
+
+.map-image{
+  width: 100%;
+  path {
+    fill: #a4ced2;
+    stroke: #FFF;
+    stroke-width: 1px;
+    transition: fill .3s ease;
+  }
+}
+
+a.is-active  path {
+  fill: red;
+}
+
+.map-list {
+  color: inherit;
+  transition: color .3s ease;
+}
+
+
+li.is-active {
+    color: red;
+    font-weight: bold;
+}

@@ -62,14 +62,14 @@ export function fetchHouses(){
   // give all flats to the payload
   const url = `${BASE_URL}/houses`;
   const promise = fetch(url, { credentials: "same-origin" }).then(r => r.json());
-  console.log('fetchHouses', promise)
-
 
   return {
     type: FETCH_HOUSE,
     payload: promise
   }
 }
+
+
 
 export function selectHouse(house){
 

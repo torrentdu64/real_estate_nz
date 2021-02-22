@@ -5,11 +5,6 @@ class Api::V1::HousesController < Api::V1::BaseController
 
   def index
     @pagy, @houses = pagy(policy_scope(House), items: 6, overflow: :empty_page)
-    # if @pagy.next.nil?
-    #   @houses = []
-    # end
-  p @pagy
-  p @houses.count
   end
 
 end
