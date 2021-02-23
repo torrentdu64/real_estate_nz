@@ -35,6 +35,9 @@ gem 'pundit'
 # Pagination Ruby Gem
 gem 'pagy'
 
+# Algolia Doc: https://github.com/algolia/algoliasearch-rails
+gem "algoliasearch-rails"
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
