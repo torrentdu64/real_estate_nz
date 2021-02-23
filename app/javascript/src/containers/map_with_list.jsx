@@ -16,26 +16,11 @@ class MapWithList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedFlat: flats[0],
-      flats,
       page: 2
     };
   }
 
-  componentWillReceiveProps = async (nextProps) => {
-    if(this.props.houses !== nextProps.houses){
 
-
-      let listOfCoord = []
-      nextProps.houses.map( house => {
-
-        listOfCoord.push([house.latitude, house.longitude])
-
-
-      })
-      console.log(listOfCoord)
-    }
-  }
 
   loadMoreHouses = () => {
     this.props.paginateHouses(this.state.page)
