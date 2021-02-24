@@ -22,11 +22,7 @@ import algoliasearch from 'algoliasearch';
 
 
 //  🚧 TEST BELOW 🚧
-// const searchClient = algoliasearch(
-//   'B1G2GM9NG0',
-//   'aadef574be1f9252bb48d4ea09b5cfe5'
-// );
-
+// 
 // const autocomplete = instantsearch.connectors.connectAutocomplete(
 //   ({ indices, refine, widgetParams }, isFirstRendering) => {
 //     const { container, onSelectChange } = widgetParams;
