@@ -1,13 +1,6 @@
 
 import algoliasearch from 'algoliasearch';
 
-// const client = algoliasearch(  <%= ENV['ApplicationID'] %>, <%= ENV['AdminAPIKey'] %> );
-// const index = client.initIndex('House');
-// const client = algoliasearch('5UC3ZRD878', 'de7358721f1652dc7e81de8c5dc8da74');
-// const index = client.initIndex('House');
-
-
-
 
 
 // const submitBtn = document.getElementById('submit-btn')
