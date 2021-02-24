@@ -42,7 +42,7 @@ class MapWithList extends Component {
     return (
        <GoogleMapReact  defaultZoom={14} defaultCenter={this.defaultCenter()} >
         { this.props.houses.map( ({latitude: lat, longitude: lng}) => {
-          debugger
+
           return  <Marker key={lat} lat={lat} lng={lng} />
         })}
         </GoogleMapReact>

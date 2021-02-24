@@ -25,8 +25,10 @@ ActiveStorage.start()
 // External imports
 import "bootstrap";
 
+import "algolia-front";
 import "nz-map";
 import "src";
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
