@@ -5,7 +5,7 @@ class House < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attributes :name, :address
+    attributes :name, :address, :image_urls, :latitude, :longitude
   end
 
 end

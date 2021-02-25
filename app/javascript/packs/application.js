@@ -25,7 +25,7 @@ ActiveStorage.start()
 // External imports
 import "bootstrap";
 
-import "algolia-front";
+//import "algolia-front";
 import "nz-map";
 import "src";
 

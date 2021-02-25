@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import MapWithList from './map_with_list'
 import FlatBanner from './flat_banner'
 import FlatDetail from './flat_detail'
+import FilterArea from './filter_area'
 
 class App extends React.Component {
 
@@ -20,7 +21,7 @@ class App extends React.Component {
     return (
       <div >
         <div className="banner-container" ref={this.bannerContainer}>
-          <p>UI Filter go Here</p>
+          <FilterArea />
           <FlatBanner bannerContainer={this.bannerContainer} />
         </div>
         <div className="">

@@ -1,4 +1,4 @@
-import { FETCH_HOUSE , PAGINATE_HOUSE } from '../actions';
+import { FETCH_HOUSE , PAGINATE_HOUSE, SEARCH_ADDRESS } from '../actions';
 
 export default function(houseState = [], action) {
   switch(action.type) {
@@ -6,6 +6,8 @@ export default function(houseState = [], action) {
       return action.payload;
     case PAGINATE_HOUSE:
      return [ ...houseState,  ...action.payload ];
+    case SEARCH_ADDRESS:
+      return [ ...action.payload ];
     default:
       return houseState;
   }

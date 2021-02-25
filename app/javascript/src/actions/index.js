@@ -4,6 +4,7 @@ export const POST_CREATED = 'POST_CREATED';
 export const FETCH_HOUSE = 'FETCH_HOUSE';
 export const SELECTED_HOUSE = 'SELECTED_HOUSE';
 export const PAGINATE_HOUSE = 'PAGINATE_HOUSE';
+export const SEARCH_ADDRESS = 'SEARCH_ADDRESS';
 
 
 const BASE_URL = '/api/v1';
@@ -77,6 +78,16 @@ export function selectHouse(house){
 
   return {
     type: SELECTED_HOUSE,
+    payload: promise
+  }
+}
+
+export function searchLocation(house){
+
+  const promise = house
+
+  return {
+    type: SEARCH_ADDRESS,
     payload: promise
   }
 }

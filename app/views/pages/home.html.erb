@@ -1,31 +1,7 @@
 
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-<!--
-<% @houses.each do |house| %>
 
-  <h1><%= house.name %> - <%= house.rating %></h1>
-
-<% end %> -->
-
-<div class="container">
-    <h1>InstantSearch.js - Results page with an autocomplete</h1>
-    <div id="autocomplete"></div>
-    <div id="hits"></div>
-</div>
-
-<div class="container">
-
-  <%= form_tag houses_index_path,:id => 'search-form', method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      id: "input-search",
-      placeholder: "Find a Place",
-      autocomplete: :off
-    %>
-    <%= submit_tag "Search", class: "btn btn-primary" , id: "submit-btn" %>
-  <% end %>
 
 
     <div id="nz-map" class="nz-map">

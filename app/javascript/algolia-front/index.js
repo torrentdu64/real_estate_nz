@@ -1,30 +1,64 @@
-
 import algoliasearch from 'algoliasearch';
+import instantsearch from 'instantsearch.js';
+import { searchBox, hits } from 'instantsearch.js/es/widgets';
+
+
+
+
+
+//import algoliasearch from 'algoliasearch';
 
 // const client = algoliasearch(  <%= ENV['ApplicationID'] %>, <%= ENV['AdminAPIKey'] %> );
 // const index = client.initIndex('House');
-// const client = algoliasearch('5UC3ZRD878', 'de7358721f1652dc7e81de8c5dc8da74');
-// const index = client.initIndex('House');
+const client = algoliasearch('5UC3ZRD878', 'fe060219aefda23fc5f2e31dfba64164');
+const index = client.initIndex('House');
 
 
 
 
 
-// const submitBtn = document.getElementById('submit-btn')
+const submitBtn = document.getElementById('submit-btn')
+const hitsArea = document.getElementById('hits-area')
 
 
-// submitBtn.addEventListener('click', (e) => {
-//   e.preventDefault()
+submitBtn.addEventListener('click', (e) => {
+  e.preventDefault()
 
-//   const inputSearch = document.getElementById('input-search').value
+  const inputSearch = document.getElementById('input-search').value
 
-//   index.search(`${inputSearch}`, {
-//       attributesToRetrieve: ['name', 'address'],
-//       hitsPerPage: 5,
-//     }).then(({ hits }) => {
-//     console.log(hits);
-//   });
-// })
+  index.search(`${inputSearch}`, {
+      attributesToRetrieve: ['name', 'address'],
+      hitsPerPage: 5,
+    }).then(({ hits }) => {
+    console.log(hits);
+    renderHitsHtml(hits)
+  });
+})
+
+
+
+
+function renderHitsHtml(hits){
+
+
+  hits.map( hit => {
+    const div = document.createElement('div')
+    div.innerHTML = hit.name
+    hitsArea.prepend(div)
+  })
+}
+
+
+
+// import algoliasearch from 'algoliasearch/lite';
+// import instantsearch from 'instantsearch.js';
+// import { searchBox, hits } from 'instantsearch.js/es/widgets';
+
+// const searchClient = algoliasearch('5UC3ZRD878', 'fe060219aefda23fc5f2e31dfba64164');
+
+
+
+
 
 
 
