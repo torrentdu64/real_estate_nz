@@ -38,6 +38,9 @@ gem 'pagy'
 # Algolia Doc: https://github.com/algolia/algoliasearch-rails
 gem "algoliasearch-rails"
 
+# Doc: https://github.com/alexreisner/geocoder
+gem 'geocoder'
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'

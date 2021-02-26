@@ -8,6 +8,8 @@ import flats from '../data/flats';
 import FlatList from './flat_list';
 import Marker from './marker';
 
+import GeoSearchMap from './GeoSearch';
+
 import {   paginateHouses } from '../actions';
 
 
@@ -58,7 +60,7 @@ class MapWithList extends Component {
           <button onClick={this.loadMoreHouses} >Load More</button>
         </div>
         <div id="map">
-
+          <GeoSearchMap />
         </div>
       </div>
      );
