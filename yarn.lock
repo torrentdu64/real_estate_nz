@@ -6405,6 +6405,15 @@ react-instantsearch-core@^6.10.0:
     prop-types "^15.6.2"
     react-fast-compare "^3.0.0"
 
+react-instantsearch-dom-maps@^6.10.0:
+  version "6.10.0"
+  resolved "https://registry.yarnpkg.com/react-instantsearch-dom-maps/-/react-instantsearch-dom-maps-6.10.0.tgz#8e236539838c2a91b46a8fedf2af959438b63f03"
+  integrity sha512-gzZvJVVTmGKwFhVU86Mc7oUKKAK8IwjNmveGv1Qv7bcslZ0YiE3x/pyWn4y8b/379Wev++d5dZSumMx086YxCQ==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    prop-types "^15.6.2"
+    scriptjs "^2.5.8"
+
 react-instantsearch-dom@^6.10.0:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/react-instantsearch-dom/-/react-instantsearch-dom-6.10.0.tgz#25286e6958461b96e8ff9ed58653dd7c943cea67"
@@ -6885,6 +6894,11 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+scriptjs@^2.5.8:
+  version "2.5.9"
+  resolved "https://registry.yarnpkg.com/scriptjs/-/scriptjs-2.5.9.tgz#343915cd2ec2ed9bfdde2b9875cd28f59394b35f"
+  integrity sha512-qGVDoreyYiP1pkQnbnFAUIS5AjenNwwQBdl7zeos9etl+hYKWahjRTfzAZZYBv5xNHx7vNKCmaLDQZ6Fr2AEXg==
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"

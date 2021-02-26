@@ -50,7 +50,7 @@ class MapWithList extends Component {
   }
 
   render() {
-
+    //{this.renderMap()}
     return (
       <div className="main-container">
         <div>
@@ -58,7 +58,7 @@ class MapWithList extends Component {
           <button onClick={this.loadMoreHouses} >Load More</button>
         </div>
         <div id="map">
-         {this.renderMap()}
+
         </div>
       </div>
      );
