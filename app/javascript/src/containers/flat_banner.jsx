@@ -122,11 +122,11 @@ class FlatBanner extends Component {
     }
 
     defaultCenter() {
-        return {
-          lat: 48.885707,
-          lng: 2.343543
-        };
-      }
+      return {
+        lat: -36.85575384089139,
+        lng: 174.7634199351231
+      };
+    }
 
   render(){
     // console.log(this.props.selectedHouse[0])
@@ -173,7 +173,14 @@ class FlatBanner extends Component {
                </div>
              </div>
 
-            <GoogleMapReact  defaultZoom={12} defaultCenter={this.defaultCenter()} >
+             <GoogleMapReact bootstrapURLKeys={{
+                                key: 'AIzaSyBzNGNF-pcCSHvOldGNWsSayZmGFzq1i-8',
+                                language: 'en',
+                                region: 'nz',
+                                libraries:['places', 'geometry', 'drawing', 'visualization'],
+                              }}
+                              defaultCenter={this.defaultCenter()}
+                              defaultZoom={14}>
              <Marker lat={selectedHouseCoordonate.lat} lng={selectedHouseCoordonate.lng} />
             </GoogleMapReact>
             <div>

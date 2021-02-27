@@ -1315,6 +1315,26 @@ algoliasearch-helper@^3.4.3, algoliasearch-helper@^3.4.4:
   dependencies:
     events "^1.1.1"
 
+"algoliasearch@>= 3.27.1 < 5", algoliasearch@^4.8.5:
+  version "4.8.5"
+  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.8.5.tgz#17a97b01c46c1ac5c1cd99d950d65e7064c8b8a9"
+  integrity sha512-GjKjpeevpePEJYinGokASNtIkl1t5EseNMlqDNAc+sXE8+iyyeqTyiJsN7bwlRG2BIremuslE/NlwdEfUuBLJw==
+  dependencies:
+    "@algolia/cache-browser-local-storage" "4.8.5"
+    "@algolia/cache-common" "4.8.5"
+    "@algolia/cache-in-memory" "4.8.5"
+    "@algolia/client-account" "4.8.5"
+    "@algolia/client-analytics" "4.8.5"
+    "@algolia/client-common" "4.8.5"
+    "@algolia/client-recommendation" "4.8.5"
+    "@algolia/client-search" "4.8.5"
+    "@algolia/logger-common" "4.8.5"
+    "@algolia/logger-console" "4.8.5"
+    "@algolia/requester-browser-xhr" "4.8.5"
+    "@algolia/requester-common" "4.8.5"
+    "@algolia/requester-node-http" "4.8.5"
+    "@algolia/transporter" "4.8.5"
+
 algoliasearch@^3.35.1:
   version "3.35.1"
   resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-3.35.1.tgz#297d15f534a3507cab2f5dfb996019cac7568f0c"
@@ -1335,26 +1355,6 @@ algoliasearch@^3.35.1:
     reduce "^1.0.1"
     semver "^5.1.0"
     tunnel-agent "^0.6.0"
-
-algoliasearch@^4.8.5:
-  version "4.8.5"
-  resolved "https://registry.yarnpkg.com/algoliasearch/-/algoliasearch-4.8.5.tgz#17a97b01c46c1ac5c1cd99d950d65e7064c8b8a9"
-  integrity sha512-GjKjpeevpePEJYinGokASNtIkl1t5EseNMlqDNAc+sXE8+iyyeqTyiJsN7bwlRG2BIremuslE/NlwdEfUuBLJw==
-  dependencies:
-    "@algolia/cache-browser-local-storage" "4.8.5"
-    "@algolia/cache-common" "4.8.5"
-    "@algolia/cache-in-memory" "4.8.5"
-    "@algolia/client-account" "4.8.5"
-    "@algolia/client-analytics" "4.8.5"
-    "@algolia/client-common" "4.8.5"
-    "@algolia/client-recommendation" "4.8.5"
-    "@algolia/client-search" "4.8.5"
-    "@algolia/logger-common" "4.8.5"
-    "@algolia/logger-console" "4.8.5"
-    "@algolia/requester-browser-xhr" "4.8.5"
-    "@algolia/requester-common" "4.8.5"
-    "@algolia/requester-node-http" "4.8.5"
-    "@algolia/transporter" "4.8.5"
 
 alphanum-sort@^1.0.0:
   version "1.0.2"
@@ -6521,6 +6521,25 @@ react-instantsearch-dom@^6.10.0:
     prop-types "^15.6.2"
     react-fast-compare "^3.0.0"
     react-instantsearch-core "^6.10.0"
+
+react-instantsearch-native@^6.10.0:
+  version "6.10.0"
+  resolved "https://registry.yarnpkg.com/react-instantsearch-native/-/react-instantsearch-native-6.10.0.tgz#2b06445c611298e34316aa9776807a61568b62f5"
+  integrity sha512-TGcRS8WgfLG4RpGlWeHFZ7Dc8jJwnDWKuF6bo8w3j81x6NAFImdwwkP6tSQVWitE0krhgK2nPGJQ5p88sme8EA==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    algoliasearch ">= 3.27.1 < 5"
+    react-instantsearch-core "^6.10.0"
+
+react-instantsearch@^6.10.0:
+  version "6.10.0"
+  resolved "https://registry.yarnpkg.com/react-instantsearch/-/react-instantsearch-6.10.0.tgz#26f4dede6044e2477c5964657c0aacea80e40e6c"
+  integrity sha512-g+lzjy1N1f+RptMq1TxV/Ud91vpHqBNTXt32jAOPQSodB98EhjmvL3+bMWdon8wwFdvsC9/Vdon8r4z1i5dZ+A==
+  dependencies:
+    "@babel/runtime" "^7.1.2"
+    react-instantsearch-core "^6.10.0"
+    react-instantsearch-dom "^6.10.0"
+    react-instantsearch-native "^6.10.0"
 
 react-is@^16.13.1, react-is@^16.4.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"

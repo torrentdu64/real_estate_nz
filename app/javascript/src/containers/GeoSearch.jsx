@@ -1,4 +1,4 @@
-import algoliasearch from 'algoliasearch/lite';
+import algoliasearch from 'algoliasearch';
 import React, { Component, Fragment } from 'react';
 import { InstantSearch, ClearRefinements } from 'react-instantsearch-dom';
 import {
@@ -8,7 +8,7 @@ import {
   Control,
 } from 'react-instantsearch-dom-maps';
 import Places from './places/widget';
-
+//import './App.css';
 
 const searchClient = algoliasearch(
   '5UC3ZRD878',
@@ -35,13 +35,14 @@ class GeoSearchMap extends Component {
               />
 
               <div style={{ height: 500 }}>
-                <GoogleMapsLoader apiKey="AIzaSyBawL8VbstJDdU5397SUX7pEt9DslAwWgQ">
+                <GoogleMapsLoader apiKey="AIzaSyBzNGNF-pcCSHvOldGNWsSayZmGFzq1i-8">
                   {google => (
                     <GeoSearch google={google}>
                       {({ hits }) => (
+
                         <Fragment>
                           <Control />
-                          {hits.map(hit => (
+                          {this.props.houses?.map(hit => (
                             <Marker key={hit.objectID} hit={hit} />
                           ))}
                         </Fragment>
@@ -57,7 +58,5 @@ class GeoSearchMap extends Component {
     );
   }
 }
-
-
 
 export default GeoSearchMap;

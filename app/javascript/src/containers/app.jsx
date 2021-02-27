@@ -21,7 +21,7 @@ class App extends React.Component {
     return (
       <div >
         <div className="banner-container" ref={this.bannerContainer}>
-          <FilterArea />
+          {/*<FilterArea />*/}
           <FlatBanner bannerContainer={this.bannerContainer} />
         </div>
         <div className="">

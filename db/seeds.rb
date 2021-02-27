@@ -39,23 +39,18 @@ House.create!(
     name: 'Trendy Apt in Buttes Montmartre',
     rating: 5 ,
     image_urls: valid_json,
-    address: '2-8 Rue du Cardinal Guibert 75018 Paris France',
+    address: '2a/188 Quay Street, Auckland Central, Auckland 1010',
      user_id: 1,
-     price: '200',
-     latitude: 48.885707,
-     longitude: 2.343543
-
+     price: '200'
 )
 
 House.create!(
     name: 'Super 60m2 in trendy neighborhood!',
     rating: 5 ,
     image_urls: valid_json,
-    address: 'Boulevard de Clichy 75018 Paris France',
+    address: '2a Williamson Avenue, Grey Lynn, Auckland 1011',
      user_id: 1,
-     price: '170',
-     latitude: 48.885312,
-     longitude: 2.341225
+     price: '170'
 )
 
 
@@ -63,65 +58,54 @@ House.create!(
     name: 'Splendide terrasse vue imprenable',
     rating: 5 ,
     image_urls: valid_json,
-    address: 'Rue Damrémont 75018 Paris France',
+    address: '17 Park Road, Grafton, Auckland 1023',
      user_id: 1,
-     price: '150',
-     latitude: 48.88184,
-     longitude: 2.343371
+     price: '150'
 )
 
 House.create!(
     name: 'Superbe vue à 2 min du Sacré Coeur',
     rating: 5 ,
     image_urls: valid_json,
-    address: 'Rue doumont 75018 Paris France',
+    address: '305 Parnell Road, Parnell, Auckland 1052',
      user_id: 1,
-     price: '120',
-     latitude: 48.888839,
-     longitude: 2.339208
+     price: '99'
 )
 
   House.create!(
     name: 'Castel du Sacré Coeur',
     rating: 5 ,
     image_urls: valid_json,
+    address: '22 Viaduct Harbour Avenue, Westhaven, Auckland 1010',
      user_id: 1,
-     price: '120',
-     latitude: 48.327865,
-     longitude: 2.450774
+     price: '150'
 )
 
   House.create!(
     name: 'cabane au fond du jardin',
     rating: 5 ,
     image_urls: valid_json,
-    address: 'Marée 75018 Paris France',
+    address: '5/66 Mount Eden Road, Mount Eden, Auckland 1024',
      user_id: 1,
-     price: '120',
-     latitude: 48.327155,
-     longitude: 2.450774
+     price: '120'
 )
 
   House.create!(
     name: 'La maison blue',
     rating: 5 ,
     image_urls: valid_json,
-    address: 'Aglo couleur 75018 Paris France',
+    address: '170 Queen Street, Auckland Central, Auckland 1010',
      user_id: 1,
-     price: '120',
-     latitude: 48.327855,
-     longitude: 2.450774
+     price: '143'
 )
 
    House.create!(
     name: 'Appart cosy',
     rating: 5 ,
     image_urls: valid_json,
-    address: '8 rue rosier 75018 Paris France',
+    address: '1B Essex Road, Mount Eden, Auckland 1024',
      user_id: 1,
-     price: '120',
-     latitude: 48.847855,
-     longitude: 2.380774
+     price: '230'
 )
 
 
@@ -129,22 +113,18 @@ House.create!(
     name: 'Bonheur au beau soleil',
     rating: 5 ,
     image_urls: valid_json,
-    address: '3 soleil street 75018 Paris France',
+    address: '10 Remuera Road, Newmarket, Auckland 1050',
      user_id: 1,
-     price: '120',
-     latitude: 48.842855,
-     longitude: 2.380374
+     price: '321'
 )
 
  House.create!(
     name: 'Bohemian and Chic in Paris',
     rating: 5 ,
     image_urls: valid_json,
-    address: '2 route de la caravane 75018 Paris France',
+    address: '277 Broadway, Newmarket, Auckland 1023',
      user_id: 1,
-     price: '120',
-     latitude: 48.927855,
-     longitude: 2.350774
+     price: '222'
 )
 
 puts "Finished!"

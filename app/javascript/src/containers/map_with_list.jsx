@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import GoogleMap from 'google-map-react';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import flats from '../data/flats';
 import FlatList from './flat_list';
-import Marker from './marker';
+import CustomMarker from './marker';
 
-import GeoSearchMap from './GeoSearch';
+//import GeoSearchMap from './GeoSearch';
+
+//import Main from './algolia-map/main';
 
 import {   paginateHouses } from '../actions';
 
@@ -31,23 +33,41 @@ class MapWithList extends Component {
 
   defaultCenter() {
     return {
-      lat: 48.885707,
-      lng: 2.343543
+      lat: -36.85575384089139,
+      lng: 174.7634199351231
     };
   }
 
+  handleApiLoaded = (map, maps) => {
+    // use map and maps objects
+  };
+
   renderMap(){
+
     let  { ...selectedHouseCoordonate }  = {...this.props.selectedHouse[0]}
 
 
-
+   //
     return (
-       <GoogleMapReact  defaultZoom={14} defaultCenter={this.defaultCenter()} >
-        { this.props.houses.map( ({latitude: lat, longitude: lng}) => {
+       <GoogleMap
+         bootstrapURLKeys={{
+            key: 'AIzaSyBzNGNF-pcCSHvOldGNWsSayZmGFzq1i-8',
+            language: 'en',
+            region: 'nz',
+            libraries:['places', 'geometry', 'drawing', 'visualization'],
 
-          return  <Marker key={lat} lat={lat} lng={lng} />
+          }}
+          defaultCenter={this.defaultCenter()}
+          defaultZoom={14}
+          yesIWantToUseGoogleMapApiInternals
+          onReady={({ map, maps }) => handleApiLoaded(map, maps)}
+          >
+
+        { this.props.houses.map( ( flat , i) => {
+
+          return  <CustomMarker key={i} lat={flat.latitude} lng={flat.longitude} price={flat.price} flat={flat} />
         })}
-        </GoogleMapReact>
+        </GoogleMap>
       )
   }
 
@@ -60,7 +80,7 @@ class MapWithList extends Component {
           <button onClick={this.loadMoreHouses} >Load More</button>
         </div>
         <div id="map">
-          <GeoSearchMap />
+         {this.renderMap()}
         </div>
       </div>
      );
